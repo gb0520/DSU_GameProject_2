@@ -2,65 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using ZB;
 
-public class PlayerMovement : MonoBehaviour
+namespace ZB
 {
-    [SerializeField] Rigidbody rb;
-    [SerializeField] Transform tf;
-    [Space]
-    [SerializeField] float moveSpeed;
-    [SerializeField] float moveMaxSpeed;
-    [Space]
-    [SerializeField] Vector3 currentMoveInputDir;
-    [SerializeField] Vector3 nowVelocity;
-
-    public void Move(Vector2 dir)
+    public class PlayerMovement : MonoBehaviour
     {
-        currentMoveInputDir = dir;
+        [SerializeField] Rigidbody rb;
+        [SerializeField] Transform tf;
+        [Space]
+        [Header("이동")]
+        [SerializeField] float moveSpeed;
+        [SerializeField] float moveMaxSpeed;
+        [Header("회전")]
+        [SerializeField] float rotSpeed;
+        [SerializeField] float rotMul_magnitude;
+        [Space]
+        [SerializeField] Vector3 nowVelocity;
+        [SerializeField] float asdf;
 
-        rb.AddForce(new Vector3(dir.x, 0, dir.y) * moveSpeed);
-    }
+        [SerializeField] Vector2 temp;
 
-    float h, v;
-    void Update()
-    {
-        //현재 속도에 맞춰 회전
-        nowVelocity = rb.velocity;
-        tf.rotation = Quaternion.Euler(0, Mathf.Atan2(nowVelocity.x, nowVelocity.z) * Mathf.Rad2Deg, 0);
-
-        //최대속도 제한
+        public void OnMoveInput(Vector2 dir)
         {
-            if (rb.velocity.x > moveMaxSpeed)
-            {
-                rb.velocity = new Vector3(moveMaxSpeed, rb.velocity.y, rb.velocity.z);
-            }
-            else if (rb.velocity.x < -moveMaxSpeed)
-            {
-                rb.velocity = new Vector3(-moveMaxSpeed, rb.velocity.y, rb.velocity.z);
-            }
+            float rotResult = 0;
 
-            if (rb.velocity.y > moveMaxSpeed)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, moveMaxSpeed, rb.velocity.z);
-            }
-            else if (rb.velocity.y < -moveMaxSpeed)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, -moveMaxSpeed, rb.velocity.z);
-            }
+            rotResult = (-(ZBMath.GetAngleByVector2(dir) - 90) * dir.magnitude * rotMul_magnitude) * Time.deltaTime * rotSpeed;
 
-            if (rb.velocity.z > moveMaxSpeed)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, moveMaxSpeed);
-            }
-            else if (rb.velocity.z < -moveMaxSpeed)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -moveMaxSpeed);
-            }
+            ZBMath.AddRotationY(tf, rotResult);
         }
-
-        //임시 인풋
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
-        Move(new Vector2(h, v));
+        private void Update()
+        {
+            Debug.Log(-(ZBMath.GetAngleByVector2(temp) - 90));
+        }
     }
 }
