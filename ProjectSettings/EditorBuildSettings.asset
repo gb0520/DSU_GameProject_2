@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/WorkSpace/ZB/Scenes/BallTest.unity
+    guid: df108fa3c9952a344833e9dcd22e24b2
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 09fff7f2c5c8c8a4ca49e53546c3be6e,
       type: 2}
