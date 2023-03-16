@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4412173820107878956}
   m_Layer: 0
   m_Name: UnAttachItem
-  m_TagString: d
+  m_TagString: fieldItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,3 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 1
   size: 0.4
+  test: 6.8

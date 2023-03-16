@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7575142124409600411}
   - component: {fileID: 9142828418480923600}
   - component: {fileID: 9142828418480923611}
-  - component: {fileID: 9142828418480923607}
+  - component: {fileID: 765844073}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Player
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8223770628434925646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.725, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,7 +116,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5060444177187149915, guid: 3ce1d0e2bd8369e46add4887d17cbea4, type: 3}
---- !u!114 &9142828418480923607
+--- !u!114 &765844073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,9 +125,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8223770628434925646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed95aabfe56f738479cfaaf27545c571, type: 3}
+  m_Script: {fileID: 11500000, guid: e309ff6cca7f44f44a91eaa7265e4052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  ballSize: 1
   joy: {fileID: 0}
-  speed: 1
-  ballSize: 0
