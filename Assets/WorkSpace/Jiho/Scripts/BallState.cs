@@ -10,12 +10,30 @@ namespace JH
     {
         [SerializeField] private float speed;
         [SerializeField] private float ballSize;
+
         [SerializeField] private FloatingJoystick joy;
+        [SerializeField] private ObjectSpawner spawner;
+
+        
+
+
+
+
+
+        private Queue<Attach> attaches;
+
+        private void Awake()
+        {
+            attaches = new Queue<Attach>();
+        }
 
         private void Update()
         {
             if (joy.Vertical != 0 || joy.Horizontal != 0)
                 Roll(speed);
+
+            if (Input.GetKeyDown(KeyCode.F))
+                PopAttach(5);
         }
 
         private void BallSizeUp(float _plus)
@@ -38,14 +56,33 @@ namespace JH
                 float test = attach.Size;
                 attach.Ball = this;
 
-                //ObjectSpawner.ObjReturn(collision.gameObject, temp);
                 BallSizeUp(test);
                 BallSize();
                 collision.gameObject.tag = "pieceItem";
                 collision.gameObject.transform.position = this.gameObject.transform.position;
+                GetAttach(attach);
+
             }
         }
 
+        private void GetAttach(Attach _attach)
+        {
+            _attach.transform.SetParent(transform);
+            attaches.Enqueue(_attach);
+        }
+
+        private void PopAttach(int _index)
+        {
+            for (int i = 0; i < _index; i++)
+            {
+                Attach temp = attaches.Dequeue();
+                temp.gameObject.tag = "null";
+                temp.gameObject.transform.SetParent(spawner.transform);
+            }
+        }
+
+        
+       
         public void Roll(float speed)
         {
             transform.Rotate(Vector3.right * Time.deltaTime * (speed * 300));

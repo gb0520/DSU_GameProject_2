@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace JH
@@ -29,12 +30,14 @@ namespace JH
                 item.gameObject.transform.position = new Vector3(positionX, 5, positionZ);
                 item.SetActive(true);
             }
+
         }
 
         public static void ObjReturn(GameObject _obj, int _count)
         {
             ObjectPool.instance.ReturnPool(_obj, _count);
         }
+
     }
 }
 
