@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace JH
@@ -10,15 +11,10 @@ namespace JH
     {
         [SerializeField] private float speed;
         [SerializeField] private float ballSize;
+        [SerializeField] private Transform ballTransform;
 
         [SerializeField] private FloatingJoystick joy;
         [SerializeField] private ObjectSpawner spawner;
-
-        
-
-
-
-
 
         private Queue<Attach> attaches;
 
@@ -33,7 +29,7 @@ namespace JH
                 Roll(speed);
 
             if (Input.GetKeyDown(KeyCode.F))
-                PopAttach(5);
+                PopAttach(attaches.Count);
         }
 
         private void BallSizeUp(float _plus)
@@ -54,7 +50,7 @@ namespace JH
 
                 int temp = attach.Index;
                 float test = attach.Size;
-                attach.Ball = this;
+                attach.ball = this;
 
                 BallSizeUp(test);
                 BallSize();
@@ -81,8 +77,6 @@ namespace JH
             }
         }
 
-        
-       
         public void Roll(float speed)
         {
             transform.Rotate(Vector3.right * Time.deltaTime * (speed * 300));

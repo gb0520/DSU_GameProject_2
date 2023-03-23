@@ -252,7 +252,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439365279}
-  m_LocalRotation: {x: 0.3701026, y: 1e-45, z: -1e-45, w: 0.9289909}
+  m_LocalRotation: {x: 0.3701026, y: -3e-45, z: 1e-45, w: 0.9289909}
   m_LocalPosition: {x: 0, y: 16.04837, z: -10.989999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -695,7 +695,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491709498}
-  m_LocalRotation: {x: 0.3701026, y: 1e-45, z: -1e-45, w: 0.9289909}
+  m_LocalRotation: {x: 0.3701026, y: -3e-45, z: 1e-45, w: 0.9289909}
   m_LocalPosition: {x: 0, y: 16.04837, z: -10.989999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1113,26 +1113,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 318183008}
     - target: {fileID: 765844073, guid: 0272f97d6acbf8648b2496d0e1ba8228, type: 3}
-      propertyPath: speed
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 765844073, guid: 0272f97d6acbf8648b2496d0e1ba8228, type: 3}
       propertyPath: spawner
       value: 
       objectReference: {fileID: 1026991257}
-    - target: {fileID: 765844073, guid: 0272f97d6acbf8648b2496d0e1ba8228, type: 3}
-      propertyPath: attach.Array.size
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 765844073, guid: 0272f97d6acbf8648b2496d0e1ba8228, type: 3}
-      propertyPath: rigids.Array.size
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7575142124409600411, guid: 0272f97d6acbf8648b2496d0e1ba8228,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 933c757fae7b9314c9332ce9a2dde89c, type: 2}
     - target: {fileID: 8223770628434925646, guid: 0272f97d6acbf8648b2496d0e1ba8228,
         type: 3}
       propertyPath: m_Name
@@ -1142,21 +1125,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749196086206776052, guid: 0272f97d6acbf8648b2496d0e1ba8228,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749196086206776052, guid: 0272f97d6acbf8648b2496d0e1ba8228,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749196086206776052, guid: 0272f97d6acbf8648b2496d0e1ba8228,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8749196086206776052, guid: 0272f97d6acbf8648b2496d0e1ba8228,
         type: 3}
