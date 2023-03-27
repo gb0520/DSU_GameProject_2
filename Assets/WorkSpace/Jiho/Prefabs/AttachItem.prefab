@@ -129,10 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   size: 0.4
+  score: 1
   test: 6.7
-  angle: 45
-  gravity: 9.8
   isShoot: 0
-  target: {fileID: 0}
-  projectile: {fileID: 2251302178674206451}
-  myTransform: {fileID: 0}
+  ball: {fileID: 0}

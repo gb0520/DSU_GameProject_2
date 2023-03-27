@@ -11,6 +11,7 @@ namespace JH
     {
         [SerializeField] private int index;
         [SerializeField] private float size;
+        [SerializeField] private float score;
         [SerializeField] private float test;
         [SerializeField] private bool isShoot;
 
@@ -23,7 +24,8 @@ namespace JH
         public BallState ball;
 
         public int Index { get => index; set => index = value; }
-        public float Size { get => size; set => size = value; } 
+        public float Size { get => size; set => size = value; }
+        public float Score { get => score; set => score = value; }
 
         private void Update()
         {
@@ -61,7 +63,7 @@ namespace JH
                 transform.position = tempPos;
                 yield return new WaitForEndOfFrame();
 
-                if(dist >= (ball.BallSize() / 2))
+                if (dist >= (ball.BallSize() / 3))
                     this.gameObject.layer = 0;
             }
             this.gameObject.tag = "fieldItem";

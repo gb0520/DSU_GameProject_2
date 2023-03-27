@@ -2,8 +2,8 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 namespace JH
 {
@@ -11,10 +11,13 @@ namespace JH
     {
         [SerializeField] private float speed;
         [SerializeField] private float ballSize;
+        [SerializeField] private float currentScore;
+        [SerializeField] private float completeScore;
         [SerializeField] private Transform ballTransform;
 
         [SerializeField] private FloatingJoystick joy;
         [SerializeField] private ObjectSpawner spawner;
+        [SerializeField] private TextMeshProUGUI test;
 
         private Queue<Attach> attaches;
 
@@ -30,16 +33,8 @@ namespace JH
 
             if (Input.GetKeyDown(KeyCode.F))
                 PopAttach(attaches.Count);
-        }
 
-        private void BallSizeUp(float _plus)
-        {
-            Vector3 currentVec = transform.localScale;
-
-            ballSize = transform.localScale.x + _plus;
-
-            transform.DOKill();
-            transform.DOScale(new Vector3(currentVec.x + _plus, currentVec.y + _plus, currentVec.z + _plus), 1f).SetEase(Ease.OutBounce);
+            Complete();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -49,10 +44,11 @@ namespace JH
                 Attach attach = collision.gameObject.GetComponent<Attach>();
 
                 int temp = attach.Index;
-                float test = attach.Size;
+                float attachSize = attach.Size;
+                float attachScore = attach.Score;
                 attach.ball = this;
 
-                BallSizeUp(test);
+                BallUpdate(attachSize, attachScore);
                 BallSize();
                 collision.gameObject.tag = "pieceItem";
                 collision.gameObject.transform.position = this.gameObject.transform.position;
@@ -61,9 +57,14 @@ namespace JH
             }
         }
 
+        private void Complete()
+        {
+            if (currentScore >= completeScore)
+                test.gameObject.SetActive(true);
+        }
+
         private void GetAttach(Attach _attach)
         {
-            _attach.transform.SetParent(transform);
             attaches.Enqueue(_attach);
         }
 
@@ -73,13 +74,36 @@ namespace JH
             {
                 Attach temp = attaches.Dequeue();
                 temp.gameObject.tag = "null";
-                temp.gameObject.transform.SetParent(spawner.transform);
+                BallUpdate(temp.Size * -1, temp.Score * -1);
             }
         }
 
-        public void Roll(float speed)
+        private void BallSizeUp(float _plus)
         {
-            transform.Rotate(Vector3.right * Time.deltaTime * (speed * 300));
+            Vector3 currentVec = transform.localScale;
+
+            if (_plus > 0)
+            {
+
+                ballSize = transform.localScale.x + _plus;
+                
+                transform.DOScale(new Vector3(currentVec.x + _plus, currentVec.y + _plus, currentVec.z + _plus), 0.01f).SetEase(Ease.OutBounce);
+            }
+            else
+            {
+                transform.localScale = new Vector3(transform.localScale.x + _plus, transform.localScale.y + _plus, transform.localScale.z + _plus);
+            }
+        }
+
+        private void BallScoreUp(float _score)
+        {
+            currentScore += _score;
+        }
+
+        private void BallUpdate(float _plus, float _score)
+        {
+            BallSizeUp(_plus);
+            BallScoreUp(_score);
         }
 
         public float BallSize()
@@ -87,6 +111,13 @@ namespace JH
             Debug.Log(ballSize);
             return ballSize;
         }
+
+        public void Roll(float speed)
+        {
+            transform.Rotate(Vector3.right * Time.deltaTime * (speed * 300));
+        }
+
+        
     }
 }
 
