@@ -12,6 +12,7 @@ namespace JH
         [SerializeField] private int index;
         [SerializeField] private float size;
         [SerializeField] private float score;
+        [SerializeField] private float least;
         [SerializeField] private float test;
         [SerializeField] private bool isShoot;
 
@@ -26,7 +27,7 @@ namespace JH
         public int Index { get => index; set => index = value; }
         public float Size { get => size; set => size = value; }
         public float Score { get => score; set => score = value; }
-
+        public float Least { get => least; set => least = value; }
         private void Update()
         {
             if(this.gameObject.tag == "pieceItem")

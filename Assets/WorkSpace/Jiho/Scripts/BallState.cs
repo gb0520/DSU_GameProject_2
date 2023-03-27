@@ -43,17 +43,19 @@ namespace JH
             {
                 Attach attach = collision.gameObject.GetComponent<Attach>();
 
-                int temp = attach.Index;
-                float attachSize = attach.Size;
-                float attachScore = attach.Score;
-                attach.ball = this;
+                if(attach.Least <= currentScore) //프랍의 습득 기준 <= 현재 스코어
+                {
+                    int temp = attach.Index;
+                    float attachSize = attach.Size;
+                    float attachScore = attach.Score;
+                    attach.ball = this;
 
-                BallUpdate(attachSize, attachScore);
-                BallSize();
-                collision.gameObject.tag = "pieceItem";
-                collision.gameObject.transform.position = this.gameObject.transform.position;
-                GetAttach(attach);
-
+                    BallUpdate(attachSize, attachScore);
+                    BallSize();
+                    collision.gameObject.tag = "pieceItem";
+                    collision.gameObject.transform.position = this.gameObject.transform.position;
+                    GetAttach(attach);
+                }
             }
         }
 

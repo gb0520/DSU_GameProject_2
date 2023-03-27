@@ -1256,10 +1256,6 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 1026991257}
-    - target: {fileID: 765844073, guid: 0272f97d6acbf8648b2496d0e1ba8228, type: 3}
-      propertyPath: completeScore
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 8223770628434925646, guid: 0272f97d6acbf8648b2496d0e1ba8228,
         type: 3}
       propertyPath: m_Name
