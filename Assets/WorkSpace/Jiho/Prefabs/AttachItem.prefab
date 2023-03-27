@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
-  size: 0.4
+  size: 1
   score: 1
   least: 0
   test: 6.7

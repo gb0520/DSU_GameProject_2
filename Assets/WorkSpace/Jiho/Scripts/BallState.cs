@@ -7,17 +7,14 @@ using TMPro;
 
 namespace JH
 {
-    public class BallState : MonoBehaviour, IStickyBall
+    public class BallState : MonoBehaviour
     {
-        [SerializeField] private float speed;
-        [SerializeField] private float ballSize;
         [SerializeField] private float currentScore;
         [SerializeField] private float completeScore;
-        [SerializeField] private Transform ballTransform;
 
-        [SerializeField] private FloatingJoystick joy;
         [SerializeField] private ObjectSpawner spawner;
         [SerializeField] private TextMeshProUGUI test;
+        [SerializeField] private BallMove ball;
 
         private Queue<Attach> attaches;
 
@@ -28,9 +25,6 @@ namespace JH
 
         private void Update()
         {
-            if (joy.Vertical != 0 || joy.Horizontal != 0)
-                Roll(speed);
-
             if (Input.GetKeyDown(KeyCode.F))
                 PopAttach(attaches.Count);
 
@@ -50,8 +44,7 @@ namespace JH
                     float attachScore = attach.Score;
                     attach.ball = this;
 
-                    BallUpdate(attachSize, attachScore);
-                    BallSize();
+                    BallUpdate(transform.localScale.x + attachSize, attachScore);
                     collision.gameObject.tag = "pieceItem";
                     collision.gameObject.transform.position = this.gameObject.transform.position;
                     GetAttach(attach);
@@ -82,19 +75,7 @@ namespace JH
 
         private void BallSizeUp(float _plus)
         {
-            Vector3 currentVec = transform.localScale;
-
-            if (_plus > 0)
-            {
-
-                ballSize = transform.localScale.x + _plus;
-                
-                transform.DOScale(new Vector3(currentVec.x + _plus, currentVec.y + _plus, currentVec.z + _plus), 0.01f).SetEase(Ease.OutBounce);
-            }
-            else
-            {
-                transform.localScale = new Vector3(transform.localScale.x + _plus, transform.localScale.y + _plus, transform.localScale.z + _plus);
-            }
+            ball.OnBallSizeUp(_plus);
         }
 
         private void BallScoreUp(float _score)
@@ -106,17 +87,6 @@ namespace JH
         {
             BallSizeUp(_plus);
             BallScoreUp(_score);
-        }
-
-        public float BallSize()
-        {
-            Debug.Log(ballSize);
-            return ballSize;
-        }
-
-        public void Roll(float speed)
-        {
-            transform.Rotate(Vector3.right * Time.deltaTime * (speed * 300));
         }
 
         

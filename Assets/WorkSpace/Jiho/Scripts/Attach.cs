@@ -33,7 +33,7 @@ namespace JH
             if(this.gameObject.tag == "pieceItem")
             {
                 dist = Vector3.Distance(this.transform.position, ball.transform.position);
-                if (dist > (ball.BallSize() / test))
+                if (dist > test)
                 {
                     transform.position = ball.transform.position;
                 }
@@ -64,7 +64,7 @@ namespace JH
                 transform.position = tempPos;
                 yield return new WaitForEndOfFrame();
 
-                if (dist >= (ball.BallSize() / 3))
+                if (dist >= (5 / 3))
                     this.gameObject.layer = 0;
             }
             this.gameObject.tag = "fieldItem";
@@ -77,7 +77,7 @@ namespace JH
             isShoot = true;
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             startPos = transform.position;
-            endPos = transform.forward * ball.BallSize() / 1.5f;
+            endPos = transform.forward * 1 / 1.5f;
             StartCoroutine("BulletMove");
         }
     }

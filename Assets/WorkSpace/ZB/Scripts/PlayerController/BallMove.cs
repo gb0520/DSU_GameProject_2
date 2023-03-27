@@ -92,52 +92,6 @@ public class BallMove : MonoBehaviour
         }
         ballMoveAssist.transform.position = ballTf.transform.position;
 
-        float newSize;
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            newSize = 0.3f;
-            ballTf.localScale = new Vector3(newSize, newSize, newSize);
-            OnBallSizeUp(newSize);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            newSize = 0.5f;
-            ballTf.localScale = new Vector3(newSize, newSize, newSize);
-            OnBallSizeUp(newSize);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            newSize = 1f;
-            ballTf.localScale = new Vector3(newSize, newSize, newSize);
-            OnBallSizeUp(newSize);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            newSize = 1.5f;
-            ballTf.localScale = new Vector3(newSize, newSize, newSize);
-            OnBallSizeUp(newSize);
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            newSize = 2.5f;
-            ballTf.localScale = new Vector3(newSize, newSize, newSize);
-            OnBallSizeUp(newSize);
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            newSize = 3f;
-            ballTf.localScale = new Vector3(newSize, newSize, newSize);
-            OnBallSizeUp(newSize);
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            newSize = 5f;
-            ballTf.localScale = new Vector3(newSize, newSize, newSize);
-            OnBallSizeUp(newSize);
-        }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            rb.velocity = Vector3.one * 5;
     }
 
     public void OnGroundTouched(bool active)
