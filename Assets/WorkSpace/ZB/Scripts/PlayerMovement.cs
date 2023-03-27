@@ -8,10 +8,25 @@ namespace ZB
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [SerializeField] ZB_CheckLayer_Ray3D ray;
+
+        //구체
+        [SerializeField] Transform iballTarget_TF;
+        IStickyBall iballTarget;
+
+        //이동 (물리)
         [SerializeField] FloatingJoystick joyStick;
-        [SerializeField] Rigidbody rb;
-        [SerializeField] Transform tf;
         [SerializeField] Transform lookAt;
+        [SerializeField] Transform moveTargetTf;
+        [SerializeField] Rigidbody rbTarget;
+
+        [Header("커지는 구체")]
+        [SerializeField] Transform sphereRB_TF;
+        [SerializeField] Transform sphereModel_TF;
+
+        [Header("회전대상")]
+        [SerializeField] Transform rotTarget_TF;
+
         [Space]
         [Header("이동")]
         [SerializeField] float moveSpeed;
@@ -22,19 +37,40 @@ namespace ZB
         [Space]
         [SerializeField] Vector2 joyStickInput;
         [SerializeField] Vector3 nowVelocity;
-        [SerializeField] float rotResult;
 
-        public void OnMoveInput(Vector2 dir)
+        [Space]
+        [SerializeField] Transform playerBody;
+
+        float rotResult;
+
+        //공크기에 따른 위치조정
+        [Space]
+        [SerializeField] float minBallDist;
+        [SerializeField] Vector3 ballDist_Result;       //아래 값들을 모두 더한 값
+        [SerializeField] Vector3 ballDist_BaseOffset;
+        [SerializeField] Vector3 ballDist_BySize;
+        [SerializeField] Vector3 ballDist_BySlop;
+
+        private void Awake()
         {
-            //회전
-            //float rotResult;
-            if (dir.x >= 0)
+            iballTarget_TF.TryGetComponent(out iballTarget);
+        }
+        
+        private void Update()
+        {
+            //조이스틱 입력, 입력반응
+            joyStickInput = new Vector2(joyStick.Horizontal, joyStick.Vertical);
+            
+            //rotResult에 회전해야하는 값 전달
+            if (joyStickInput.x >= 0)
             {
-                rotResult = (-(ZBMath.GetAngleByVector2(dir) - 90) * dir.magnitude * rotMul_magnitude) * Time.deltaTime * rotSpeed;
+                rotResult =
+                    (-(ZBMath.GetAngleByVector2(joyStickInput) - 90) * joyStickInput.magnitude * rotMul_magnitude)
+                    * Time.deltaTime * rotSpeed;
             }
             else
             {
-                rotResult = ZBMath.GetAngleByVector2(dir);
+                rotResult = ZBMath.GetAngleByVector2(joyStickInput);
                 if (rotResult >= 0)
                 {
                     rotResult = rotResult - 90;
@@ -43,40 +79,64 @@ namespace ZB
                 {
                     rotResult = rotResult + 270;
                 }
-                rotResult = ((-rotResult) * dir.magnitude * rotMul_magnitude) * Time.deltaTime * rotSpeed;
+                rotResult = ((-rotResult) * joyStickInput.magnitude * rotMul_magnitude) * Time.deltaTime * rotSpeed;
             }
-            ZBMath.AddRotationY(tf, rotResult);
+
+            //회전시켜야할 대상 회전시킴
+            ZBMath.AddRotationY(rotTarget_TF, rotResult);
 
             //힘
-            Vector3 movePower = (lookAt.position - tf.position) * dir.magnitude * moveSpeed;
-            rb.velocity = new Vector3(movePower.x, rb.velocity.y, movePower.z);
+            Vector3 movePower = (lookAt.position - moveTargetTf.position) * joyStickInput.magnitude * moveSpeed;
+            //rbTarget.velocity = new Vector3(movePower.x, rbTarget.velocity.y, movePower.z);
+            rbTarget.AddForce(new Vector3(movePower.x, rbTarget.velocity.y, movePower.z));
 
             //최대속도 제한
             {
-                if (rb.velocity.x > moveMaxSpeed)
+                if (rbTarget.velocity.x > moveMaxSpeed)
                 {
-                    rb.velocity = new Vector3(moveMaxSpeed, rb.velocity.y, rb.velocity.z);
+                    rbTarget.velocity = new Vector3(moveMaxSpeed, rbTarget.velocity.y, rbTarget.velocity.z);
                 }
-                else if (rb.velocity.x < -moveMaxSpeed)
+                else if (rbTarget.velocity.x < -moveMaxSpeed)
                 {
-                    rb.velocity = new Vector3(-moveMaxSpeed, rb.velocity.y, rb.velocity.z);
+                    rbTarget.velocity = new Vector3(-moveMaxSpeed, rbTarget.velocity.y, rbTarget.velocity.z);
                 }
 
-                if (rb.velocity.z > moveMaxSpeed)
+                if (rbTarget.velocity.z > moveMaxSpeed)
                 {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, moveMaxSpeed);
+                    rbTarget.velocity = new Vector3(rbTarget.velocity.x, rbTarget.velocity.y, moveMaxSpeed);
                 }
-                else if (rb.velocity.z < -moveMaxSpeed)
+                else if (rbTarget.velocity.z < -moveMaxSpeed)
                 {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -moveMaxSpeed);
+                    rbTarget.velocity = new Vector3(rbTarget.velocity.x, rbTarget.velocity.y, -moveMaxSpeed);
                 }
             }
-            nowVelocity = rb.velocity;
+            nowVelocity = rbTarget.velocity;
+
+            sphereModel_TF.transform.position = sphereRB_TF.transform.position;
+
+            ray.transform.position = sphereRB_TF.position + (sphereRB_TF.position - lookAt.position).normalized * 30;
+            ray.transform.position = new Vector3(ray.transform.position.x,
+                iballTarget_TF.position.y - iballTarget.BallSize() * 0.5f + 1.5f, ray.transform.position.z);
+
+            Vector3 rayDir = (sphereRB_TF.position - ray.transform.position);
+            rayDir = new Vector3(rayDir.x, 0, rayDir.z);
+            ray.ChangeDir(rayDir);
+
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                sphereModel_TF.localScale += Vector3.one;
+                sphereRB_TF.localScale += Vector3.one;
+            }
+
+            ControlPlayerPos(playerBody, iballTarget.BallSize());
         }
-        private void Update()
+        void ControlPlayerPos(Transform tfTarget, float size)
         {
-            joyStickInput = new Vector2(joyStick.Horizontal, joyStick.Vertical);
-            OnMoveInput(joyStickInput);
+            //Vector3 offset = ray.GetLastTouchedPosition() - iballTarget_TF.position;
+            //offset = new Vector3(offset.x, ray.GetLastTouchedPosition().y - 2, offset.z);
+            //ballDist_BySize = offset;
+
+            tfTarget.position = ray.GetLastTouchedPosition();
         }
     }
 }
