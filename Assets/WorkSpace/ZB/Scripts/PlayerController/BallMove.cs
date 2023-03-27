@@ -12,6 +12,7 @@ public class BallMove : MonoBehaviour
     [SerializeField] Transform ballMoveAssist;
     [SerializeField] Transform moveDir;
     [SerializeField] Transform modelPivot;
+    [SerializeField] Transform ballAttatchRbTf;
     [SerializeField] SphereCollider ballMoveAssist_Col;
     [SerializeField] ZB_CheckLayer_Ray3D ray;
 
@@ -92,6 +93,15 @@ public class BallMove : MonoBehaviour
         }
         ballMoveAssist.transform.position = ballTf.transform.position;
 
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            OnBallSizeUp(3);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            OnBallSizeUp(15);
+        }
     }
 
     public void OnGroundTouched(bool active)
@@ -104,6 +114,7 @@ public class BallMove : MonoBehaviour
         float radius = size / 2;
         ballMoveAssist_Col.radius = radius;
         ray.transform.localPosition = new Vector3(0, (-radius) + (modelHeight) - 0.1f, -75);
+        ballAttatchRbTf.localScale = new Vector3(size, size, size);
 
         //공크기가 캐릭터 모델링 크기 * 1.5f 보다 작을경우
         if (radius < modelHeight * 1.5f)
