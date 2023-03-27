@@ -130,5 +130,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   ballSize: 1
+  currentScore: 0
+  completeScore: 30
+  ballTransform: {fileID: 0}
   joy: {fileID: 0}
   spawner: {fileID: 0}
+  test: {fileID: 0}
