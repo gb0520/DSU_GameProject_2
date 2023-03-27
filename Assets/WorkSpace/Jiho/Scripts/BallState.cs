@@ -43,7 +43,7 @@ namespace JH
             {
                 Attach attach = collision.gameObject.GetComponent<Attach>();
 
-                if(attach.Least <= currentScore) //프랍의 습득 기준 <= 현재 스코어
+                if(attach.Least <= currentScore) //object_getPoint <= currentScore
                 {
                     int temp = attach.Index;
                     float attachSize = attach.Size;
