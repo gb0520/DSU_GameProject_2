@@ -14,6 +14,7 @@ public class BallMove : MonoBehaviour
     [SerializeField] Transform moveDir;
     [SerializeField] Transform modelPivot;
     [SerializeField] Transform ballAttatchRbTf;
+    [SerializeField] Transform cameraPoint;
     [SerializeField] SphereCollider ballMoveAssist_Col;
     [SerializeField] ZB_CheckLayer_Ray3D ray;
 
@@ -93,15 +94,15 @@ public class BallMove : MonoBehaviour
             }
         }
         ballMoveAssist.transform.position = ballTf.transform.position;
-
+        ray.ChangeDir(moveDir.transform.position - ballMoveAssist.transform.position);
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            OnBallSizeUp(3);
+            OnBallSizeUp(1);
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            OnBallSizeUp(15);
+            OnBallSizeUp(-1);
         }
     }
 
@@ -112,11 +113,11 @@ public class BallMove : MonoBehaviour
 
     public void OnBallSizeUp(float size)
     {
-
         float radius = (ballAttatchRbTf.localScale.x + size) / 2;
         ballMoveAssist_Col.radius = radius;
         ray.transform.localPosition = new Vector3(0, (-radius) + (modelHeight) - 0.1f, -75);
         ballAttatchRbTf.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
+        cameraPoint.localPosition = new Vector3(0, radius * radius * 0.2f, 0);
 
         ballTf.localScale = ballAttatchRbTf.localScale;
 
