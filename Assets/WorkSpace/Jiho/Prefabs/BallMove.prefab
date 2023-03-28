@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 1727138496941818992}
   - component: {fileID: 415396613}
   m_Layer: 22
-  m_Name: Ball
+  m_Name: RealBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,7 +445,7 @@ MonoBehaviour:
   ray: {fileID: 4378834488627933686}
   groundTouching: 1
   rotSpeed: 1
-  rotMul_magnitude: 0.5
+  rotMul_magnitude: 1
   moveSpeed: 30
   moveMaxSpeed: 20
   joyStickInput: {x: 0, y: 0}

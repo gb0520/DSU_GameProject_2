@@ -74,11 +74,15 @@ namespace JH
 
         private void Shoot()
         {
+            float random = UnityEngine.Random.Range(transform.position.x - (transform.localScale.x * 5), transform.position.x + (transform.localScale.x * 5));
+            float random2 = UnityEngine.Random.Range(transform.position.z - (transform.localScale.z * 5), transform.position.z + (transform.localScale.z * 5));
+
             this.gameObject.layer = 6;
             isShoot = true;
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             startPos = transform.position;
-            endPos = transform.forward * 1 / 1.5f;
+            endPos = new Vector3(random, transform.position.y, random2);
+
             StartCoroutine("BulletMove");
         }
     }
