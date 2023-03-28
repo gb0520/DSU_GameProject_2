@@ -1,3 +1,4 @@
+using JH;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -111,10 +112,13 @@ public class BallMove : MonoBehaviour
 
     public void OnBallSizeUp(float size)
     {
-        float radius = size / 2;
+
+        float radius = (ballAttatchRbTf.localScale.x + size) / 2;
         ballMoveAssist_Col.radius = radius;
         ray.transform.localPosition = new Vector3(0, (-radius) + (modelHeight) - 0.1f, -75);
-        ballAttatchRbTf.localScale = new Vector3(size, size, size);
+        ballAttatchRbTf.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
+
+        ballTf.localScale = ballAttatchRbTf.localScale;
 
         //공크기가 캐릭터 모델링 크기 * 1.5f 보다 작을경우
         if (radius < modelHeight * 1.5f)

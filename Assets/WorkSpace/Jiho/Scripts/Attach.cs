@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using DG.Tweening;
 using System;
-
 namespace JH
 {
     public class Attach : MonoBehaviour
@@ -16,24 +15,25 @@ namespace JH
         [SerializeField] private float test;
         [SerializeField] private bool isShoot;
 
+        public BallState ball;
+
         //----------------------ÆøÆÄ º¯¼ö
         private Vector3 startPos, endPos;
         private float timer;
         private float dist;
         //------------------------------
 
-        public BallState ball;
-
         public int Index { get => index; set => index = value; }
         public float Size { get => size; set => size = value; }
         public float Score { get => score; set => score = value; }
         public float Least { get => least; set => least = value; }
+
         private void Update()
         {
             if(this.gameObject.tag == "pieceItem")
             {
                 dist = Vector3.Distance(this.transform.position, ball.transform.position);
-                if (dist > test)
+                if (dist > ball.gameObject.transform.localScale.x / 2.3f)
                 {
                     transform.position = ball.transform.position;
                 }
@@ -68,6 +68,7 @@ namespace JH
                     this.gameObject.layer = 0;
             }
             this.gameObject.tag = "fieldItem";
+            this.gameObject.layer = 0;
             isShoot = false;
         }
 
@@ -77,7 +78,7 @@ namespace JH
             isShoot = true;
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             startPos = transform.position;
-            endPos = transform.forward * 1 / 1.5f;
+            endPos = transform.forward * 5 / 1.5f;
             StartCoroutine("BulletMove");
         }
     }

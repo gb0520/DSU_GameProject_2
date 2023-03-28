@@ -44,9 +44,10 @@ namespace JH
                     float attachScore = attach.Score;
                     attach.ball = this;
 
-                    BallUpdate(transform.localScale.x + attachSize, attachScore);
-                    collision.gameObject.tag = "pieceItem";
-                    collision.gameObject.transform.position = this.gameObject.transform.position;
+                    BallUpdate(attachSize, attachScore);
+                    attach.gameObject.tag = "pieceItem";
+                    attach.gameObject.layer = 8;
+                    attach.gameObject.transform.position = this.gameObject.transform.position;
                     GetAttach(attach);
                 }
             }
@@ -69,6 +70,7 @@ namespace JH
             {
                 Attach temp = attaches.Dequeue();
                 temp.gameObject.tag = "null";
+                //temp.gameObject.layer = 0;
                 BallUpdate(temp.Size * -1, temp.Score * -1);
             }
         }
