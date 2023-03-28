@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
-  size: 0.3
-  score: 1
+  size: 0.15
+  score: 2
   least: 0
   test: 6.7
   isShoot: 0

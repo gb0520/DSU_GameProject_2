@@ -341,7 +341,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 933c757fae7b9314c9332ce9a2dde89c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1281,6 +1281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEnter_Col:
     m_PersistentCalls:
+      m_Calls: []
+  onStay_Col:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 39496250863059685}
         m_TargetAssemblyTypeName: BallMove, Assembly-CSharp
@@ -1294,9 +1297,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  onStay_Col:
-    m_PersistentCalls:
-      m_Calls: []
   onExiit_Col:
     m_PersistentCalls:
       m_Calls:
@@ -1312,7 +1312,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  targetLayer: 0
+  targetLayer: 24
   lastTouchedTransform: {fileID: 0}
 --- !u!1 &1739978237428903084
 GameObject:

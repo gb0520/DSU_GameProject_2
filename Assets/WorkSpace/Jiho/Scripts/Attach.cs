@@ -78,7 +78,7 @@ namespace JH
             isShoot = true;
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             startPos = transform.position;
-            endPos = transform.forward * 5 / 1.5f;
+            endPos = transform.forward * 1 / 1.5f;
             StartCoroutine("BulletMove");
         }
     }

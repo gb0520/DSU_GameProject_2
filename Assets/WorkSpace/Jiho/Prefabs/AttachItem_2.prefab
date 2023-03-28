@@ -130,7 +130,7 @@ MonoBehaviour:
   index: 2
   size: 0.1
   score: 2
-  least: 15
+  least: 0
   test: 6.7
   isShoot: 0
   ball: {fileID: 0}
