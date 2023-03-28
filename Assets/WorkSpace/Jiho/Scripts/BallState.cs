@@ -91,7 +91,10 @@ namespace JH
             BallScoreUp(_score);
         }
 
-        
+        public void BoomButton()
+        {
+            PopAttach(attaches.Count);
+        }
     }
 }
 
