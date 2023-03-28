@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 7432387156913122508}
   - component: {fileID: 8125042089222651928}
   - component: {fileID: 1727138496941818992}
+  - component: {fileID: 415396613}
   m_Layer: 22
   m_Name: Ball
   m_TagString: Untagged
@@ -190,7 +191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df440f8aeedf465429c68d9c3864edc6, type: 2}
+  - {fileID: 2100000, guid: 933c757fae7b9314c9332ce9a2dde89c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,6 +256,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEnter_Col:
     m_PersistentCalls:
+      m_Calls: []
+  onStay_Col:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 39496252942964707}
         m_TargetAssemblyTypeName: BallMove, Assembly-CSharp
@@ -268,9 +272,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  onStay_Col:
-    m_PersistentCalls:
-      m_Calls: []
   onExiit_Col:
     m_PersistentCalls:
       m_Calls:
@@ -286,8 +287,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  targetLayer: 0
+  targetLayer: 24
   lastTouchedTransform: {fileID: 0}
+--- !u!114 &415396613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4262703225834143065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e309ff6cca7f44f44a91eaa7265e4052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScore: 0
+  completeScore: 50
+  spawner: {fileID: 0}
+  test: {fileID: 0}
+  ball: {fileID: 39496252942964707}
 --- !u!1 &4910162495703255807
 GameObject:
   m_ObjectHideFlags: 0
