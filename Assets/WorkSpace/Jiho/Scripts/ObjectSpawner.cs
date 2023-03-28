@@ -13,34 +13,29 @@ namespace JH
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                GameObject item = ObjectPool.instance.Dequeue(0);
-                float positionX = Random.Range(-4f, 4f);
-                float positionZ = Random.Range(-4f, 4f);
-                item.transform.SetParent(transform);
-                item.gameObject.transform.position = new Vector3(positionX, 5, positionZ);
-                item.SetActive(true);
+                MobSpawn(0);
             }
 
             if (Input.GetKeyDown(KeyCode.W))
             {
-                GameObject item = ObjectPool.instance.Dequeue(1);
-                float positionX = Random.Range(-4f, 4f);
-                float positionZ = Random.Range(-4f, 4f);
-                item.transform.SetParent(transform);
-                item.gameObject.transform.position = new Vector3(positionX, 5, positionZ);
-                item.SetActive(true);
+                MobSpawn(1);
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                GameObject item = ObjectPool.instance.Dequeue(2);
-                float positionX = Random.Range(-4f, 4f);
-                float positionZ = Random.Range(-4f, 4f);
-                item.transform.SetParent(transform);
-                item.gameObject.transform.position = new Vector3(positionX, 5, positionZ);
-                item.SetActive(true);
+                MobSpawn(2);
             }
 
+        }
+
+        public void MobSpawn(int count)
+        {
+            GameObject item = ObjectPool.instance.Dequeue(count);
+            float positionX = Random.Range(-4f, 4f);
+            float positionZ = Random.Range(-4f, 4f);
+            item.transform.SetParent(transform);
+            item.gameObject.transform.position = new Vector3(positionX, 5, positionZ);
+            item.SetActive(true);
         }
 
         public static void ObjReturn(GameObject _obj, int _count)
