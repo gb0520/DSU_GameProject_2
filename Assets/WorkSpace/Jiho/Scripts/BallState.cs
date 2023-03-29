@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 namespace JH
 {
@@ -51,6 +52,14 @@ namespace JH
                     GetAttach(attach);
                 }
             }
+
+            if(collision.gameObject.tag == "unAttach")
+            {
+                Attach attach = collision.gameObject.GetComponent<Attach>();
+
+                PopAttach(attach.Count);
+                attach.gameObject.SetActive(false);
+            }
         }
 
         private void Complete()
@@ -66,6 +75,9 @@ namespace JH
 
         private void PopAttach(int _index)
         {
+            if (_index > attaches.Count)
+                _index = attaches.Count;
+
             for (int i = 0; i < _index; i++)
             {
                 Attach temp = attaches.Dequeue();

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4412173820107878956}
   m_Layer: 0
   m_Name: UnAttachItem
-  m_TagString: fieldItem
+  m_TagString: unAttach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,9 +128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 1
-  size: 0.03
-  score: 5
-  least: 10
+  count: 10
+  size: 0
+  score: 0
+  least: 0
   test: 6.7
   isShoot: 0
   ball: {fileID: 0}

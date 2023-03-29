@@ -9,6 +9,7 @@ namespace JH
     public class Attach : MonoBehaviour
     {
         [SerializeField] private int index;
+        [SerializeField] private int count;
         [SerializeField] private float size;
         [SerializeField] private float score;
         [SerializeField] private float least;
@@ -24,6 +25,7 @@ namespace JH
         //------------------------------
 
         public int Index { get => index; set => index = value; }
+        public int Count { get => count; set => count = value; }
         public float Size { get => size; set => size = value; }
         public float Score { get => score; set => score = value; }
         public float Least { get => least; set => least = value; }
