@@ -58,7 +58,7 @@ namespace JH
                 Attach attach = collision.gameObject.GetComponent<Attach>();
 
                 PopAttach(attach.Count);
-                attach.gameObject.SetActive(false);
+                ObjectPool.instance.ReturnPool(attach.gameObject, attach.Index);
             }
         }
 
