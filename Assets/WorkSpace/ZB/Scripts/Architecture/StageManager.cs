@@ -38,7 +38,7 @@ namespace ZB.Architecture
             handlers = new IHandlers[handlers_Target.Length];
             for (int i = 0; i < handlers.Length; i++)
             {
-                handlers_Target[i].TryGetComponent(out handlers);
+                handlers_Target[i].TryGetComponent(out handlers[i]);
             }
         }
     }

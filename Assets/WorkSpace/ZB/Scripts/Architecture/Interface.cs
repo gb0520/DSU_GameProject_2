@@ -32,6 +32,7 @@ namespace ZB.Architecture
 
     interface ITimer
     {
+        bool isPaused();
         int nowTime();
         int timeLimit();
     }
