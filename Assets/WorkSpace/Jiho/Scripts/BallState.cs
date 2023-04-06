@@ -19,6 +19,9 @@ namespace JH
 
         private Queue<Attach> attaches;
 
+        public float CurrentScore { get => currentScore; set => currentScore = value; }
+        public float CompleteScore { get => completeScore; set => completeScore = value; }
+
         private void Awake()
         {
             attaches = new Queue<Attach>();
@@ -28,8 +31,6 @@ namespace JH
         {
             if (Input.GetKeyDown(KeyCode.F))
                 PopAttach(attaches.Count);
-
-            Complete();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -60,12 +61,6 @@ namespace JH
                 PopAttach(attach.Count);
                 ObjectPool.instance.ReturnPool(attach.gameObject, attach.Index);
             }
-        }
-
-        private void Complete()
-        {
-            if (currentScore >= completeScore)
-                test.gameObject.SetActive(true);
         }
 
         private void GetAttach(Attach _attach)
@@ -107,6 +102,8 @@ namespace JH
         {
             PopAttach(attaches.Count);
         }
+
+        
     }
 }
 
