@@ -6,7 +6,7 @@ using ZB.Architecture;
 
 namespace ZB
 {
-    public class ClearChecker : MonoBehaviour, IOverCheck, ITimer
+    public class OverChecker : MonoBehaviour, IOverCheck, ITimer
     {
         [SerializeField] private UnityEvent m_OnTimeCountStart;
         [SerializeField] private UnityEvent m_OnTimeCountPauseTrue;
@@ -25,11 +25,11 @@ namespace ZB
 
         public void OnEnterStage()
         {
-
+            TimeCountStart();
         }
         public void OnExitStage()
         {
-
+            TimeCountStop();
         }
         public bool OverCheck()
         {

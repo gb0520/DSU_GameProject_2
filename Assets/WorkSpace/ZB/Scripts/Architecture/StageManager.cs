@@ -15,6 +15,7 @@ namespace ZB.Architecture
         IOverCheck overCheck;
         IHandlers[] handlers;
 
+        [ContextMenu("OnEnter")]
         public void OnEnterStage()
         {
             clearCheck.OnEnterStage();
@@ -23,6 +24,7 @@ namespace ZB.Architecture
                 handlers[i].OnEnterStage();
         }
 
+        [ContextMenu("OnExit")]
         public void OnExitStage()
         {
             clearCheck.OnExitStage();
@@ -33,12 +35,15 @@ namespace ZB.Architecture
 
         private void Awake()
         {
-            clearCheck_Target.TryGetComponent(out clearCheck);
-            overCheck_Target.TryGetComponent(out overCheck);
+            if (clearCheck_Target.TryGetComponent(out clearCheck))
+                Debug.Log("ClearCheck Connected");
+            if (overCheck_Target.TryGetComponent(out overCheck))
+                Debug.Log("OverCheck Connected");
             handlers = new IHandlers[handlers_Target.Length];
             for (int i = 0; i < handlers.Length; i++)
             {
-                handlers_Target[i].TryGetComponent(out handlers[i]);
+                if(handlers_Target[i].TryGetComponent(out handlers[i]))
+                    Debug.Log($"Handler Index [{i}] Connected");
             }
         }
     }
