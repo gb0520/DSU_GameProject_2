@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748e0b10e91f0cd408c743d8deb08f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ITimerTarget: {fileID: 0}
+  m_ITimerTarget: {fileID: 2004778452}
   m_img_body: {fileID: 397324371}
   m_rtf_body: {fileID: 397324371}
   m_tmp_Minuite: {fileID: 462626071}
@@ -4962,6 +4962,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7891651363629611076, guid: ecdefce5d0ef33f48875aa42d8819277, type: 3}
+--- !u!4 &2004778452 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8541575536307191963, guid: 2b4c23bbbecfdcf4aac16428fa201565,
+    type: 3}
+  m_PrefabInstance: {fileID: 398366915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2006309152 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7105662354002544503, guid: d62a51a81b6621945b29e40d58f266ce,
