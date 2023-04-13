@@ -54,6 +54,8 @@ namespace ZB
 
         void Awake()
         {
+            m_uEvent_Restart.AddListener(FindObjectOfType<StageManager>().OnEnterStage);
+
             m_vec2_originalSize_Clear = m_rtf_window_Clear.transform.localScale;
             m_vec2_originalSize_Over = m_rtf_window_Over.transform.localScale;
         }
