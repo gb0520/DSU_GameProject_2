@@ -443,7 +443,8 @@ MonoBehaviour:
   cameraPoint: {fileID: 4063477845954202595}
   ballMoveAssist_Col: {fileID: 3726122024088973671}
   ray: {fileID: 4378834488627933686}
-  groundTouching: 1
+  controlActive: 0
+  groundTouching: 0
   rotSpeed: 1
   rotMul_magnitude: 1
   moveSpeed: 30
@@ -452,6 +453,10 @@ MonoBehaviour:
   rotResult: 0
   modelHeight: 2
   modelWidth: 1
+  m_uEvent_TimeCountStart:
+    m_PersistentCalls:
+      m_Calls: []
+  m_timeCountStartFocusing: 0
 --- !u!1 &6487577235817945561
 GameObject:
   m_ObjectHideFlags: 0

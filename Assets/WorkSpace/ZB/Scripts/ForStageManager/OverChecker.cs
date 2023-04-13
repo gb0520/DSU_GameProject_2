@@ -14,7 +14,7 @@ namespace ZB
         [SerializeField] private UnityEvent m_OnTimeCountStop;          //시간체크 끝 (게임오버)
         [SerializeField] private UnityEvent m_OnTimeCountUpdate;        //시간체크 Stay
 
-        [SerializeField] StageManager m_stageManager;
+        StageManager m_stageManager;
 
         [Header("수정요소")]
         [SerializeField] private float m_timeLimit;
@@ -27,7 +27,7 @@ namespace ZB
 
         public void OnEnterStage()
         {
-            TimeCountStart();
+
         }
         public void OnExitStage()
         {
@@ -111,6 +111,11 @@ namespace ZB
 
             m_OnTimeCountStop.Invoke();
             m_stageManager.OnExitStage();
+        }
+
+        private void Awake()
+        {
+            m_stageManager = FindObjectOfType<StageManager>();
         }
     }
 }
