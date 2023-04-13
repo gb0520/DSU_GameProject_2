@@ -8,11 +8,13 @@ namespace ZB
 {
     public class OverChecker : MonoBehaviour, IOverCheck, ITimer
     {
-        [SerializeField] private UnityEvent m_OnTimeCountStart;
-        [SerializeField] private UnityEvent m_OnTimeCountPauseTrue;
-        [SerializeField] private UnityEvent m_OnTimeCountPauseFalse;
-        [SerializeField] private UnityEvent m_OnTimeCountStop;
-        [SerializeField] private UnityEvent m_OnTimeCountUpdate;
+        [SerializeField] private UnityEvent m_OnTimeCountStart;         //시간체크 시작
+        [SerializeField] private UnityEvent m_OnTimeCountPauseTrue;     //일시정지 Enter
+        [SerializeField] private UnityEvent m_OnTimeCountPauseFalse;    //일시정지 Exit
+        [SerializeField] private UnityEvent m_OnTimeCountStop;          //시간체크 끝 (게임오버)
+        [SerializeField] private UnityEvent m_OnTimeCountUpdate;        //시간체크 Stay
+
+        [SerializeField] StageManager m_stageManager;
 
         [Header("수정요소")]
         [SerializeField] private float m_timeLimit;
@@ -29,7 +31,7 @@ namespace ZB
         }
         public void OnExitStage()
         {
-            TimeCountStop();
+            TimeCountPauseActive(true);
         }
         public bool OverCheck()
         {
@@ -77,26 +79,12 @@ namespace ZB
         }
         public void TimeCountPauseActive(bool active)
         {
-            m_pause = active;
-
-            if (active)     m_OnTimeCountPauseTrue.Invoke();
-            else            m_OnTimeCountPauseFalse.Invoke();
-        }
-        [ContextMenu("TimeCountStop")]
-        public void TimeCountStop()
-        {
             if (m_timeCounting)
             {
-                if (timeCountUpdate_C != null)
-                {
-                    StopCoroutine(timeCountUpdate_C);
-                }
-                m_OnTimeCountStop.Invoke();
+                m_pause = active;
 
-                m_nowTime = m_timeLimit;
-                m_pause = false;
-                m_over = false;
-                m_timeCounting = false;
+                if (active) m_OnTimeCountPauseTrue.Invoke();
+                else m_OnTimeCountPauseFalse.Invoke();
             }
         }
 
@@ -117,11 +105,12 @@ namespace ZB
                 yield return null;
             }
 
-            m_OnTimeCountStop.Invoke();
-
             m_timeCounting = false;
             m_nowTime = 0;
             m_over = true;
+
+            m_OnTimeCountStop.Invoke();
+            m_stageManager.OnExitStage();
         }
     }
 }
