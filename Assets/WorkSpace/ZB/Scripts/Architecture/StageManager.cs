@@ -15,6 +15,7 @@ namespace ZB.Architecture
         IOverCheck overCheck;
         List<IHandlers> handlers;
 
+        //씬 처음에 로드할 때, ResultWindow에서 재실행 클릭할 경우 실행됩니다.
         [ContextMenu("OnEnter")]
         public void OnEnterStage()
         {
@@ -24,6 +25,8 @@ namespace ZB.Architecture
                 handlers[i].OnEnterStage();
         }
 
+        //ClearCheck 에서 완성도가 기준치가 됐을때, 호출합니다.
+        //OverCheck 에서 타임카운트가 끝났을때, 호출합니다.
         [ContextMenu("OnExit")]
         public void OnExitStage()
         {
@@ -44,8 +47,16 @@ namespace ZB.Architecture
             for (int i = 0; i < handlers_Target.Length; i++)
             {
                 if (handlers_Target[i].TryGetComponent(out extractedHandler))
+                {
+                    Debug.Log("Handler Connected / name : " + handlers_Target[i].gameObject.name);
                     handlers.Add(extractedHandler);
+                }
             }
+        }
+
+        private void Start()
+        {
+            OnEnterStage();
         }
     }
 }

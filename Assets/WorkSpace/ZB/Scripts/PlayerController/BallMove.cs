@@ -2,7 +2,9 @@ using JH;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using ZB;
+using ZB.Architecture;
 
 public class BallMove : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class BallMove : MonoBehaviour
     [SerializeField] ZB_CheckLayer_Ray3D ray;
 
     [Header("이동가능여부")]
+    [SerializeField] bool controlActive;
     [SerializeField] bool groundTouching;
 
     [Header("회전")]
@@ -39,10 +42,13 @@ public class BallMove : MonoBehaviour
 
     Vector3 rotDir;
 
-    // Update is called once per frame
-    void Update()
+    [Header("땅 밟으며 타임카운트 시작")]
+    [SerializeField] bool m_timeCountStartFocusing;
+    UnityEvent m_uEvent_TimeCountStart;
+
+    private void Update()
     {
-        if (groundTouching)
+        if (controlActive)
         {
             //* 조이스틱 입력
             //조이스틱 입력, 입력반응
@@ -69,48 +75,61 @@ public class BallMove : MonoBehaviour
             ZBMath.AddRotationY(ballMoveAssist, rotResult);
             rotDir = moveDir.transform.position - ballMoveAssist.transform.position;
 
-            //* 공이동
-            rb.AddForce(rotDir.normalized * moveSpeed * joyStickInput.magnitude);
-
-            //최대속도 제한
+            if (groundTouching)
             {
-                if (rb.velocity.x > moveMaxSpeed)
-                {
-                    rb.velocity = new Vector3(moveMaxSpeed, rb.velocity.y, rb.velocity.z);
-                }
-                else if (rb.velocity.x < -moveMaxSpeed)
-                {
-                    rb.velocity = new Vector3(-moveMaxSpeed, rb.velocity.y, rb.velocity.z);
-                }
+                //* 공이동
+                rb.AddForce(rotDir.normalized * moveSpeed * joyStickInput.magnitude);
 
-                if (rb.velocity.z > moveMaxSpeed)
+                //최대속도 제한
                 {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, moveMaxSpeed);
-                }
-                else if (rb.velocity.z < -moveMaxSpeed)
-                {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -moveMaxSpeed);
+                    if (rb.velocity.x > moveMaxSpeed)
+                    {
+                        rb.velocity = new Vector3(moveMaxSpeed, rb.velocity.y, rb.velocity.z);
+                    }
+                    else if (rb.velocity.x < -moveMaxSpeed)
+                    {
+                        rb.velocity = new Vector3(-moveMaxSpeed, rb.velocity.y, rb.velocity.z);
+                    }
+
+                    if (rb.velocity.z > moveMaxSpeed)
+                    {
+                        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, moveMaxSpeed);
+                    }
+                    else if (rb.velocity.z < -moveMaxSpeed)
+                    {
+                        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -moveMaxSpeed);
+                    }
                 }
             }
-        }
-        ballMoveAssist.transform.position = ballTf.transform.position;
-        ray.ChangeDir(moveDir.transform.position - ballMoveAssist.transform.position);
+            ballMoveAssist.transform.position = ballTf.transform.position;
+            ray.ChangeDir(moveDir.transform.position - ballMoveAssist.transform.position);
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            OnBallSizeUp(1);
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                OnBallSizeUp(1);
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                OnBallSizeUp(-1);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            OnBallSizeUp(-1);
-        }
+    }
+    private void Awake()
+    {
+        m_uEvent_TimeCountStart = new UnityEvent();
+        m_uEvent_TimeCountStart.AddListener(FindObjectOfType<OverChecker>().TimeCountStart);
     }
 
     public void OnGroundTouched(bool active)
     {
+        if (m_timeCountStartFocusing)
+        {
+            m_timeCountStartFocusing = false;
+            m_uEvent_TimeCountStart.Invoke();
+        }
+
         groundTouching = active;
     }
-
     public void OnBallSizeUp(float size)
     {
         float radius = (ballAttatchRbTf.localScale.x + size) / 2;
@@ -144,5 +163,20 @@ public class BallMove : MonoBehaviour
                 ((ray.GetLastTouchedPosition() - ballMoveAssist.transform.position).normalized * modelWidth * 0.5f).z)
                 + new Vector3(0, -modelHeight, 0);
         }
+    }
+
+    public void SetPlayerPosition(Vector3 position)
+    {
+        ballTf.position = position;
+    }
+    //게임시작 시 초기화 (땅밟으면 타임카운트 시작 가능하도록한다.)
+    public void OnPlayerEnterReset()
+    {
+        m_timeCountStartFocusing = true;
+    }
+    //조이스틱으로 상호작용 On Off
+    public void ControlActive(bool active)
+    {
+        controlActive = active;
     }
 }

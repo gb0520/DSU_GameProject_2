@@ -36,6 +36,7 @@ namespace ZB
             m_tmp_Minuite.DOColor(Color.black, 0.7f).SetEase(Ease.OutQuart);
             m_tmp_Colon.DOColor(Color.black, 0.7f).SetEase(Ease.OutQuart);
             m_tmp_Second.DOColor(Color.black, 0.7f).SetEase(Ease.OutQuart);
+            m_img_body.DOColor(Color.white, 1).SetEase(Ease.OutQuart);
         }
         public void OnTimeCountPause(bool active)
         {
@@ -64,11 +65,11 @@ namespace ZB
             m_tmp_Second.text = SecondCount_To_SecondInteger(m_ITimer.nowTime()).ToString("00");
         }
 
-        int SecondCount_To_MinuiteInteger(float nowTime)
+        static public int SecondCount_To_MinuiteInteger(float nowTime)
         {
             return (int)nowTime / 60;
         }
-        int SecondCount_To_SecondInteger(float nowTime)
+        static public int SecondCount_To_SecondInteger(float nowTime)
         {
             return (int)nowTime % 60;
         }
