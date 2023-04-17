@@ -16,7 +16,7 @@ namespace JH
     {
         public static ObjectPool instance;
 
-        [SerializeField] private ObjectInfo[] objectInfos = null;
+        public ObjectInfo[] objectInfos = null;
 
         [Header("오브젝트 풀의 위치")]
         [SerializeField] private Transform tfPoolParent;
@@ -37,12 +37,12 @@ namespace JH
 
         private void Start()
         {
-            objectPoolList = new List<Queue<GameObject>>();
-            ObjectPoolState();
+            
         }
 
-        private void ObjectPoolState()
+        public void ObjectPoolState()
         {
+            objectPoolList = new List<Queue<GameObject>>();
             if (objectInfos != null)
             {
                 for (int i = 0; i < objectInfos.Length; i++)
@@ -54,9 +54,12 @@ namespace JH
 
         public void ReturnPool(GameObject obj, int _count)
         {
+            
             objectPoolList[_count].Enqueue(obj);
             obj.transform.SetParent(tfPoolParent);
             obj.SetActive(false);
+            obj.tag = "fieldItem";
+            obj.layer = 0;
         }
 
         public GameObject Dequeue(int _count)

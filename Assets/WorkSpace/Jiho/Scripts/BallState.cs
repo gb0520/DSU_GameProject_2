@@ -15,7 +15,8 @@ namespace JH
 
         [SerializeField] private ObjectSpawner spawner;
         [SerializeField] private TextMeshProUGUI test;
-        [SerializeField] private BallMove ball;
+        public BallMove ball;
+        public float tempSize;
 
         private Queue<Attach> attaches;
 
@@ -47,6 +48,7 @@ namespace JH
                     attach.ball = this;
 
                     BallUpdate(attachSize, attachScore);
+                    tempSize += attachSize;
                     attach.gameObject.tag = "pieceItem";
                     attach.gameObject.layer = 8;
                     attach.gameObject.transform.position = this.gameObject.transform.position;
@@ -82,7 +84,7 @@ namespace JH
             }
         }
 
-        private void BallSizeUp(float _plus)
+        public void BallSizeUp(float _plus)
         {
             ball.OnBallSizeUp(_plus);
         }

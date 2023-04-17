@@ -5,38 +5,55 @@ using UnityEngine;
 
 namespace JH
 {
+    [System.Serializable]
+    public class ObjectTransform
+    {
+        public string objectName;
+        public Transform[] transforms;
+        [Header("°Çµé ¤¤¤¤")]
+        public GameObject[] tempObject;
+    }
+
     public class ObjectSpawner : MonoBehaviour
     {
-        [SerializeField] private int testInt;
 
-        private void Update()
+        public ObjectTransform[] objTransforms;
+
+        public void SpawnerInit()
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            for(int i = 0; i < objTransforms.Length; i++)
             {
-                MobSpawn(0);
+                MobSpawn(objTransforms[i].transforms.Length, i);
             }
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                MobSpawn(1);
-            }
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                MobSpawn(2);
-            }
-
         }
 
-        public void MobSpawn(int count)
+        public void MobSpawn(int count, int index)
         {
-            GameObject item = ObjectPool.instance.Dequeue(count);
-            float positionX = Random.Range(-4f, 4f);
-            float positionZ = Random.Range(-4f, 4f);
-            item.transform.SetParent(transform);
-            item.gameObject.transform.position = new Vector3(positionX, 5, positionZ);
-            item.SetActive(true);
+            objTransforms[index].tempObject = new GameObject[count];
+            for(int i = 0; i < count; i++)
+            {
+                GameObject item = ObjectPool.instance.Dequeue(index);
+                objTransforms[index].tempObject[i] = item;
+                item.transform.SetParent(transform);
+                item.gameObject.transform.position = objTransforms[index].transforms[i].position;
+                item.SetActive(true);
+            }
+
+            
         }
+
+        public void ReturnObject()
+        {
+            for(int i = 0; i < objTransforms.Length; i++)
+            {
+                for(int j = 0; j < objTransforms[i].tempObject.Length; j++)
+                {
+                    if (objTransforms[i].tempObject[j] != null)
+                        ObjReturn(objTransforms[i].tempObject[j], i);
+                }
+            }
+        }
+
 
         public static void ObjReturn(GameObject _obj, int _count)
         {

@@ -23,6 +23,8 @@ namespace JH
         {
             currentScore = ball.CurrentScore;
             completeScore = ball.CompleteScore;
+            if (currentScore > completeScore)
+                currentScore = completeScore;
 
             scoreText.text = currentScore.ToString() + " / " + completeScore.ToString();
             scorePercent = currentScore / completeScore * 100;
