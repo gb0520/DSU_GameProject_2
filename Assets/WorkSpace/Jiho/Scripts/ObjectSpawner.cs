@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace JH
@@ -12,29 +13,36 @@ namespace JH
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                GameObject item = ObjectPool.instance.Dequeue(0);
-                item.SetActive(true);
-                float positionX = Random.Range(-4f, 4f);
-                float positionZ = Random.Range(-4f, 4f);
-                item.gameObject.transform.position = new Vector3(positionX, 5, positionZ);
-                item.transform.SetParent(transform);
+                MobSpawn(0);
             }
 
             if (Input.GetKeyDown(KeyCode.W))
             {
-                GameObject item = ObjectPool.instance.Dequeue(1);
-                item.SetActive(true);
-                float positionX = Random.Range(-4f, 4f);
-                float positionZ = Random.Range(-4f, 4f);
-                item.gameObject.transform.position = new Vector3(positionX, 5, positionZ);
-                item.transform.SetParent(transform);
+                MobSpawn(1);
             }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                MobSpawn(2);
+            }
+
+        }
+
+        public void MobSpawn(int count)
+        {
+            GameObject item = ObjectPool.instance.Dequeue(count);
+            float positionX = Random.Range(-4f, 4f);
+            float positionZ = Random.Range(-4f, 4f);
+            item.transform.SetParent(transform);
+            item.gameObject.transform.position = new Vector3(positionX, 5, positionZ);
+            item.SetActive(true);
         }
 
         public static void ObjReturn(GameObject _obj, int _count)
         {
             ObjectPool.instance.ReturnPool(_obj, _count);
         }
+
     }
 }
 

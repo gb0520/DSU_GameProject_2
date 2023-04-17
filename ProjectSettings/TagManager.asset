@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - d
+  - pieceItem
+  - fieldItem
+  - null
+  - unAttach
   layers:
   - Default
   - TransparentFX
@@ -12,6 +15,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Shoot
+  - Floor
+  - item
   - 
   - 
   - 
@@ -23,14 +29,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ball
+  - BallAssist
+  - BallRollRigidbody
+  - BallAttachRigidbody
+  - Wall
   - 
   - 
   - 

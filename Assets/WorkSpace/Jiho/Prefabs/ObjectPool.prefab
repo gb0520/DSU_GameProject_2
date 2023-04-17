@@ -48,9 +48,12 @@ MonoBehaviour:
   - objectName: "\uBD80\uCC29\uBB3C"
     perfab: {fileID: 1699474631806275071, guid: 2218a311d45a845439c1f6d15791a9af,
       type: 3}
-    count: 7
+    count: 3
   - objectName: "\uBC29\uD574\uBB3C"
     perfab: {fileID: 1351414271185949950, guid: 63f6b4563a055784cac8c6229f46edc0,
       type: 3}
+    count: 3
+  - objectName: "\uBD80\uCC29\uBB3C"
+    perfab: {fileID: 522096230420436576, guid: 34e80db17bd40f14aba7606cd94223ea, type: 3}
     count: 3
   tfPoolParent: {fileID: 7556497898568598788}
