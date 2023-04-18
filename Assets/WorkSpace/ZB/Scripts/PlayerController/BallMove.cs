@@ -172,11 +172,18 @@ public class BallMove : MonoBehaviour
     //게임시작 시 초기화 (땅밟으면 타임카운트 시작 가능하도록한다.)
     public void OnPlayerEnterReset()
     {
-        m_timeCountStartFocusing = true;
+        StartCoroutine(delay_N_timeCountStartFocus());
     }
     //조이스틱으로 상호작용 On Off
     public void ControlActive(bool active)
     {
         controlActive = active;
+    }
+
+
+    IEnumerator delay_N_timeCountStartFocus()
+    {
+        yield return null;
+        m_timeCountStartFocusing = true;
     }
 }

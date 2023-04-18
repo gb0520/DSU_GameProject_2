@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using ZB.Architecture;
 
 namespace ZB.Architecture
 {
     public class StageManager : MonoBehaviour
     {
+        [SerializeField] UnityEvent OnClear;
+        [SerializeField] UnityEvent OnOver;
         [SerializeField] Transform clearCheck_Target;
         [SerializeField] Transform overCheck_Target;
         [SerializeField] Transform[] handlers_Target;
@@ -15,10 +18,13 @@ namespace ZB.Architecture
         IOverCheck overCheck;
         List<IHandlers> handlers;
 
+        [SerializeField] bool stageDoing;
+
         //씬 처음에 로드할 때, ResultWindow에서 재실행 클릭할 경우 실행됩니다.
         [ContextMenu("OnEnter")]
         public void OnEnterStage()
         {
+            stageDoing = true;
             clearCheck.OnEnterStage();
             overCheck.OnEnterStage();
             for (int i = 0; i < handlers.Count; i++)
@@ -30,6 +36,7 @@ namespace ZB.Architecture
         [ContextMenu("OnExit")]
         public void OnExitStage()
         {
+            stageDoing = false;
             clearCheck.OnExitStage();
             overCheck.OnExitStage();
             for (int i = 0; i < handlers.Count; i++)
@@ -57,6 +64,26 @@ namespace ZB.Architecture
         private void Start()
         {
             OnEnterStage();
+        }
+
+        private void Update()
+        {
+            if (stageDoing)
+            {
+                //스테이지 클리어
+                if (clearCheck.ClearCheck())
+                {
+                    OnExitStage();
+                    OnClear.Invoke();
+                }
+
+                //스테이지 오버
+                if (overCheck.OverCheck())
+                {
+                    OnExitStage();
+                    OnOver.Invoke();
+                }
+            }
         }
     }
 }

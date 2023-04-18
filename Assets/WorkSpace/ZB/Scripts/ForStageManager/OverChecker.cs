@@ -8,13 +8,17 @@ namespace ZB
 {
     public class OverChecker : MonoBehaviour, IOverCheck, ITimer
     {
-        [SerializeField] private UnityEvent m_OnTimeCountStart;         //시간체크 시작
-        [SerializeField] private UnityEvent m_OnTimeCountPauseTrue;     //일시정지 Enter
-        [SerializeField] private UnityEvent m_OnTimeCountPauseFalse;    //일시정지 Exit
-        [SerializeField] private UnityEvent m_OnTimeCountStop;          //시간체크 끝 (게임오버)
+        [Header("시간체크 시작 바닥충돌 전"), SerializeField]
+        private UnityEvent m_OnTimeCountStart_Focus;         //시간체크 시작
+        [Header("시간체크 시작 바닥충돌 후"), SerializeField]
+        private UnityEvent m_OnTimeCountStart_Col;         //시간체크 시작
+        [Header("일시정지 입장"), SerializeField]
+        private UnityEvent m_OnTimeCountPauseTrue;     //일시정지 Enter
+        [Header("일시정지 퇴장"), SerializeField]
+        private UnityEvent m_OnTimeCountPauseFalse;    //일시정지 Exit
+        [Header("시간체크 끝"), SerializeField]
+        private UnityEvent m_OnTimeCountStop;          //시간체크 끝 (게임오버)
         [SerializeField] private UnityEvent m_OnTimeCountUpdate;        //시간체크 Stay
-
-        StageManager m_stageManager;
 
         [Header("수정요소")]
         [SerializeField] private float m_timeLimit;
@@ -27,7 +31,7 @@ namespace ZB
 
         public void OnEnterStage()
         {
-
+            m_OnTimeCountStart_Focus.Invoke();
         }
         public void OnExitStage()
         {
@@ -61,7 +65,7 @@ namespace ZB
         {
             if (!m_timeCounting)
             {
-                m_OnTimeCountStart.Invoke();
+                m_OnTimeCountStart_Col.Invoke();
 
                 timeCountUpdate_C = timeCountUpdate();
                 StartCoroutine(timeCountUpdate_C);
@@ -110,12 +114,6 @@ namespace ZB
             m_over = true;
 
             m_OnTimeCountStop.Invoke();
-            m_stageManager.OnExitStage();
-        }
-
-        private void Awake()
-        {
-            m_stageManager = FindObjectOfType<StageManager>();
         }
     }
 }
