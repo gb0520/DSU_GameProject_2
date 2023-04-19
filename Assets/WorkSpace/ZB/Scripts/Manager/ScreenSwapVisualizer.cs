@@ -17,33 +17,17 @@ namespace ZB
         [SerializeField] bool m_fading;
 
         [Header("변경가능")]
-        [SerializeField] float m_moveDuration;
+        [SerializeField] float m_duration_FadeIn;
+        [SerializeField] float m_duration_LoadWait;
+        [SerializeField] float m_duration_FadeOut;
         [SerializeField] float m_circleSize;
 
         UnityEvent OnFadeEnded;
 
-        /// <summary>
-        /// true : Fade In / false : Fade Out
-        /// </summary>
-        /// <param name="active"></param>
-        /// <param name="fadeEndAction"></param>
-        public void Fade(bool active, UnityAction fadeEndAction = null)
+        public void Fade(UnityAction fadeEndAction = null)
         {
-            //Fade In
-            if (active)
-            {
-                m_tf_Mask.DOKill();
-                m_tf_Mask.localScale = new Vector2(m_circleSize, m_circleSize);
-                m_tf_Mask.DOScale(Vector2.zero, m_moveDuration).SetEase(Ease.InQuart);
-            }
-
-            //Fade Out
-            else
-            {
-                m_tf_Mask.DOKill();
-                m_tf_Mask.localScale = Vector2.zero;
-                m_tf_Mask.DOScale(new Vector2(m_circleSize, m_circleSize), m_moveDuration).SetEase(Ease.InQuart);
-            }
+            if (fadeEndAction != null)
+                OnFadeEnded.AddListener(fadeEndAction);
 
             if (MoveCycle_C != null)
                 StopCoroutine(MoveCycle_C);
@@ -54,29 +38,36 @@ namespace ZB
         [ContextMenu("FadeIn")]
         public void TestFadeIn()
         {
-            Fade(true);
-        }
-        [ContextMenu("FadeOut")]
-        public void TestFadeOut()
-        {
-            Fade(false);
+            Fade();
         }
 
-        WaitForSeconds MoveCycle_WFS;
+        WaitForSecondsRealtime MoveCycle_WFS;
         IEnumerator MoveCycle_C;
         IEnumerator MoveCycle()
         {
             m_fading = true;
+
+            //Fade In
+            m_tf_Mask.DOKill();
+            m_tf_Mask.localScale = new Vector2(m_circleSize, m_circleSize);
+            m_tf_Mask.DOScale(Vector2.zero, m_duration_FadeIn).SetUpdate(true).SetEase(Ease.InQuart);
+
             yield return MoveCycle_WFS;
+
+            //FadeOut
+            m_tf_Mask.DOKill();
+            m_tf_Mask.localScale = Vector2.zero;
+            m_tf_Mask.DOScale(new Vector2(m_circleSize, m_circleSize), m_duration_FadeOut).SetUpdate(true).SetEase(Ease.InQuart);
 
             m_fading = false;
             OnFadeEnded.Invoke();
-            OnFadeEnded = null;
+            OnFadeEnded.RemoveAllListeners();
         }
 
         private void Awake()
         {
             OnFadeEnded = new UnityEvent();
+            MoveCycle_WFS = new WaitForSecondsRealtime(m_duration_LoadWait);
         }
     }
 }

@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SceneMove : MonoBehaviour
+namespace ZB
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SceneMove : MonoBehaviour
     {
-        
-    }
+        [SerializeField] string currentInputSceneName;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void SceneMoveStart(string sceneName)
+        {
+            currentInputSceneName = sceneName;
+            Managers.instance.ScreenSwap.Fade(LoadScene);
+        }
+
+        void LoadScene()
+        {
+            SceneManager.LoadScene(currentInputSceneName);
+        }
+
+        [ContextMenu("TestLoadScene")]
+        public void Test()
+        {
+            SceneMoveStart("StageTest_Recent");
+        }
     }
 }

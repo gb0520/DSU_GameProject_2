@@ -117,7 +117,11 @@ public class BallMove : MonoBehaviour
     private void Awake()
     {
         m_uEvent_TimeCountStart = new UnityEvent();
-        m_uEvent_TimeCountStart.AddListener(FindObjectOfType<OverChecker>().TimeCountStart);
+        try
+        {
+            m_uEvent_TimeCountStart.AddListener(FindObjectOfType<OverChecker>().TimeCountStart);
+        }
+        catch { }
     }
 
     public void OnGroundTouched(bool active)
