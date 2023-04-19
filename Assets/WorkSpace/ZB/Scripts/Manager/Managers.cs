@@ -11,8 +11,12 @@ namespace ZB
         public static Managers instance;
 
         public ScreenSwapVisualizer ScreenSwap { get => screenSwapVisualizer; }
+        public SoundMaster SoundMaster { get => soundMaster; }
 
-        [SerializeField] ScreenSwapVisualizer screenSwapVisualizer;
+        [SerializeField] private ScreenSwapVisualizer screenSwapVisualizer;
+        [SerializeField] private SoundMaster soundMaster;
+
+
 
         private void Awake()
         {
