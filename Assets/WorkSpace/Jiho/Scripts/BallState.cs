@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using ZB;
 
 namespace JH
 {
@@ -42,6 +43,7 @@ namespace JH
 
                 if(attach.Least <= currentScore) //object_getPoint <= currentScore
                 {
+                    Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[1], false);
                     int temp = attach.Index;
                     float attachSize = attach.Size;
                     float attachScore = attach.Score;
@@ -58,6 +60,7 @@ namespace JH
 
             if(collision.gameObject.tag == "unAttach")
             {
+                Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[2], false);
                 Attach attach = collision.gameObject.GetComponent<Attach>();
 
                 PopAttach(attach.Count);
