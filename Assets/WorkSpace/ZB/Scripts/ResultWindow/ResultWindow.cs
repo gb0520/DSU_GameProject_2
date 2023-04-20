@@ -65,6 +65,7 @@ namespace ZB
             Vector2 originalSize = isClear ? m_vec2_originalSize_Clear : m_vec2_originalSize_Over;
             if (active)
             {
+                Debug.LogError("¿­·Á¶ó");
                 //Æ®À§´×
                 targetWindow.gameObject.SetActive(true);
                 targetWindow.DOKill();
@@ -86,6 +87,7 @@ namespace ZB
             }
             else
             {
+                Debug.LogError("´ÝÇô¶ó");
                 //Æ®À§´×
                 targetWindow.gameObject.SetActive(true);
                 targetWindow.DOKill();

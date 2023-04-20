@@ -21,13 +21,15 @@ public class ObjectHandler : MonoBehaviour, IHandlers
 
     public void OnEnterStage()
     {
-        ballState.CurrentScore = 0;
-        ballState.BallSizeUp((ballState.tempSize) * -1);
         spawner.SpawnerInit();
+        ballState.tempSize = 0;
     }
 
     public void OnExitStage()
     {
+        ballState.CurrentScore = 0;
+        ballState.BallSizeUp((ballState.tempSize) * -1);
+
         spawner.ReturnObject();
     }
 }

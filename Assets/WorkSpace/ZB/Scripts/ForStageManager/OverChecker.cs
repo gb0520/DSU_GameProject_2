@@ -63,10 +63,12 @@ namespace ZB
         [ContextMenu("TimeCountStart")]
         public void TimeCountStart()
         {
-            if (!m_timeCounting)
+            //if (!m_timeCounting)
             {
                 m_OnTimeCountStart_Col.Invoke();
 
+                if (timeCountUpdate_C != null)
+                    StopCoroutine(timeCountUpdate_C);
                 timeCountUpdate_C = timeCountUpdate();
                 StartCoroutine(timeCountUpdate_C);
             }

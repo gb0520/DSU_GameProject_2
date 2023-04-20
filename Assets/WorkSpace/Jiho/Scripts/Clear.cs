@@ -12,6 +12,7 @@ namespace JH
         //킹니티 이벤트 써서 일단 업데이트문 만들기
         [SerializeField] private UnityEvent OnCheckUpdate;
         [SerializeField] private UnityEvent OnCheckClear;
+        [SerializeField] private ScoreCheck scoreCheck;
 
         [SerializeField] private bool isClear;
 
@@ -22,17 +23,18 @@ namespace JH
 
         public bool ClearCheck()
         {
-            return isClear;
+            return scoreCheck.isClear;
         }
 
         public void OnEnterStage()
         {
-            isClear = false;
+
         }
 
         public void OnExitStage()
         {
-            isClear = true;
+            Debug.LogError("EXIT");
+            scoreCheck.isClear = false;
         }
 
         private IEnumerator CheckUpdate()
