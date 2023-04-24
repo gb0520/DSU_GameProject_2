@@ -487,7 +487,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160045495}
-  m_LocalRotation: {x: 0.41477367, y: -1e-45, z: 1e-45, w: 0.9099246}
+  m_LocalRotation: {x: 0.41477367, y: 0.000000024642791, z: -0.000000011232998, w: 0.9099246}
   m_LocalPosition: {x: 13.580001, y: 12.046755, z: -8.313285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -776,7 +776,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1490568587
 RectTransform:
@@ -914,7 +914,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621110445}
-  m_LocalRotation: {x: 0.41477367, y: -1e-45, z: 1e-45, w: 0.9099246}
+  m_LocalRotation: {x: 0.41477367, y: 0.000000024642791, z: -0.000000011232998, w: 0.9099246}
   m_LocalPosition: {x: 13.580001, y: 12.046755, z: -8.313285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1387,6 +1387,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2043542508, guid: 4d8294a9e4aabdb42a9922d75bba451c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2700
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043542508, guid: 4d8294a9e4aabdb42a9922d75bba451c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2700
+      objectReference: {fileID: 0}
     - target: {fileID: 3053614670205790349, guid: 4d8294a9e4aabdb42a9922d75bba451c,
         type: 3}
       propertyPath: m_Name
