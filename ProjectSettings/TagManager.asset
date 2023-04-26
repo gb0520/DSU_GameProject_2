@@ -8,6 +8,8 @@ TagManager:
   - fieldItem
   - null
   - unAttach
+  - wall_vertical
+  - wall_horizontal
   layers:
   - Default
   - TransparentFX

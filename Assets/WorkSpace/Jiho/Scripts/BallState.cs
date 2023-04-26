@@ -16,6 +16,12 @@ namespace JH
 
         [SerializeField] private ObjectSpawner spawner;
         [SerializeField] private TextMeshProUGUI test;
+        [SerializeField] private LayerMask wallLayer;
+        [SerializeField] private GameObject danger_obj;
+        [SerializeField] private GameObject ray_obj;
+
+        private Ray ray;
+        RaycastHit hit;
         public BallMove ball;
         public float tempSize;
 
@@ -27,12 +33,39 @@ namespace JH
         private void Awake()
         {
             attaches = new Queue<Attach>();
+            ray = new Ray();
+            
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F))
-                PopAttach(attaches.Count);
+            WallDistanceCheck();
+        }
+
+        private void WallDistanceCheck()
+        {
+            ray.origin = ray_obj.transform.position;
+            ray.direction = ray_obj.transform.forward;
+
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, 10, wallLayer))
+            {
+                danger_obj.SetActive(true);
+
+                if(hit.transform.CompareTag("wall_horizontal"))
+                {
+                    danger_obj.transform.localScale = new Vector3(1f, 2.5f * transform.localScale.y, 2.5f * transform.localScale.z);
+                    danger_obj.transform.position = new Vector3(hit.point.x, transform.position.y, transform.position.z);
+                }
+                else if(hit.transform.CompareTag("wall_vertical"))
+                {
+                    danger_obj.transform.localScale = new Vector3(2.5f * transform.localScale.x, 2.5f * transform.localScale.y, 1f);
+                    danger_obj.transform.position = new Vector3(transform.position.x, transform.position.y, hit.point.z);
+                }
+            }
+            else
+            {
+                danger_obj.SetActive(false);
+            }
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -108,7 +141,6 @@ namespace JH
             PopAttach(attaches.Count);
         }
 
-        
     }
 }
 
