@@ -15,6 +15,7 @@ public class BallMove : MonoBehaviour
     [SerializeField] Transform ballTf;
     [SerializeField] Transform ballMoveAssist;
     [SerializeField] Transform moveDir;
+    [SerializeField] Transform joyStickDir;
     [SerializeField] Transform modelPivot;
     [SerializeField] Transform ballAttatchRbTf;
     [SerializeField] Transform cameraPoint;
@@ -27,11 +28,12 @@ public class BallMove : MonoBehaviour
 
     [Header("회전")]
     [SerializeField] float rotSpeed;
-    [SerializeField] float rotMul_magnitude;
 
     [Header("속도")]
     [SerializeField] float moveSpeed;
     [SerializeField] float moveMaxSpeed;
+    [SerializeField] float breakPower;
+    bool breaked;
 
     [Header("회전입력")]
     [SerializeField] Vector2 joyStickInput;
@@ -55,27 +57,21 @@ public class BallMove : MonoBehaviour
             //* 조이스틱 입력
             //조이스틱 입력, 입력반응
             joyStickInput = new Vector2(joyStick.Horizontal, joyStick.Vertical);
-            if (joyStickInput.x >= 0)
+
+            if (joyStickInput != Vector2.zero)
             {
-                rotResult =
-                    (-(ZBMath.GetAngleByVector2(joyStickInput) - 90) * joyStickInput.magnitude * rotMul_magnitude)
-                    * Time.deltaTime * rotSpeed;
+                breaked = false;
+
+                float angle_stick_focus = Vector2.SignedAngle(joyStickInput, Vector2.up);
+                float radian = (angle_stick_focus + focusLook.m_YAxisAngle) * Mathf.Deg2Rad;
+                Vector2 direction = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
+                joyStickDir.position = ballTf.transform.position + new Vector3(direction.y, 0, direction.x);
+
+                rotResult = Vector3.SignedAngle(moveDir.localPosition.normalized, joyStickDir.localPosition.normalized, Vector3.up);
+
+                ZBMath.AddRotationY(ballMoveAssist, rotResult * rotSpeed * 0.1f);
+                rotDir = moveDir.transform.position - ballMoveAssist.transform.position;
             }
-            else
-            {
-                rotResult = ZBMath.GetAngleByVector2(joyStickInput);
-                if (rotResult >= 0)
-                {
-                    rotResult = rotResult - 90;
-                }
-                else
-                {
-                    rotResult = rotResult + 270;
-                }
-                rotResult = ((-rotResult) * joyStickInput.magnitude * rotMul_magnitude) * Time.deltaTime * rotSpeed;
-            }
-            ZBMath.AddRotationY(ballMoveAssist, rotResult);
-            rotDir = moveDir.transform.position - ballMoveAssist.transform.position;
 
             if (groundTouching)
             {
@@ -103,17 +99,16 @@ public class BallMove : MonoBehaviour
                     }
                 }
             }
+
+            //브레이크
+            if (groundTouching && joyStickInput == Vector2.zero && !breaked)
+            {
+                breaked = true;
+                rb.velocity *= breakPower;
+            }
+
             ballMoveAssist.transform.position = ballTf.transform.position;
             ray.ChangeDir(moveDir.transform.position - ballMoveAssist.transform.position);
-
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                OnBallSizeUp(1);
-            }
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                OnBallSizeUp(-1);
-            }
         }
     }
     private void Awake()

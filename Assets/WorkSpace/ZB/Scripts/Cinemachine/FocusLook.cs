@@ -7,7 +7,8 @@ namespace ZB.Drag
 {
     public class FocusLook : MonoBehaviour
     {
-        public Vector3 m_LookDir { get => m_cameraPoint.position - m_cameraPoint.position; }
+        public Vector3 m_LookDir { get => m_cameraPoint.position - m_vCam.transform.position; }
+        public float m_YAxisAngle { get => Mathf.Atan2(m_LookDir.x, m_LookDir.z) * Mathf.Rad2Deg; }
 
         [Header("Flexible")]
         [SerializeField] private float m_dragSpeed;
