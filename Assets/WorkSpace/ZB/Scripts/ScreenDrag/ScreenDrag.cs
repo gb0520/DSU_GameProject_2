@@ -8,6 +8,9 @@ namespace ZB.Drag
 {
     public class ScreenDrag : MonoBehaviour
     {
+        public bool ShowDebug { get => showDebug; }
+        [SerializeField] bool showDebug;
+
         /// <summary>
         /// 드래그 시작할 때 이벤트
         /// </summary>
@@ -24,6 +27,11 @@ namespace ZB.Drag
         public Vector2 m_DragVector { get => m_screen.m_DragVector; }
 
         /// <summary>
+        /// 한번 검사하는 텀동안 이동한 벡터
+        /// </summary>
+        public Vector2 m_DragVector_OneFrame { get => m_screen.m_DragVector_OneFrame; }
+
+        /// <summary>
         /// 최근 드래그한 벡터 크기
         /// </summary>
         public float m_Magnitude { get => m_screen.m_DragVector.magnitude; }
@@ -33,8 +41,12 @@ namespace ZB.Drag
         /// </summary>
         public bool m_Dragging { get => m_screen.m_Dragging; }
 
+        /// <summary>
+        /// 드래그 진행 중에, 멈춤
+        /// </summary>
+        public bool m_DragStop { get => m_screen.m_DragStop; }
+
         [SerializeField] Screen m_screen;
-        [SerializeField] Image m_img_screen;
 
         /// <summary>
         /// 드래그 스크린 활성화
@@ -43,11 +55,6 @@ namespace ZB.Drag
         public void Active(bool active)
         {
             m_screen.gameObject.SetActive(active);
-        }
-
-        private void Awake()
-        {
-            m_img_screen.color = Color.clear;
         }
     }
 }

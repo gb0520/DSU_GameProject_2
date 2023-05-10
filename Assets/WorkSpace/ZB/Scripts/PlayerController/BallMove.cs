@@ -8,6 +8,7 @@ using ZB.Architecture;
 
 public class BallMove : MonoBehaviour
 {
+    [SerializeField] ZB.Drag.FocusLook focusLook;
     [SerializeField] Joystick joyStick;
     [SerializeField] Rigidbody rb;
 
@@ -40,6 +41,7 @@ public class BallMove : MonoBehaviour
     [SerializeField] float modelHeight;
     [SerializeField] float modelWidth;
 
+    Vector3 nowLookDir { get => moveDir.position - transform.position; }
     Vector3 rotDir;
 
     [Header("땅 밟으며 타임카운트 시작")]
