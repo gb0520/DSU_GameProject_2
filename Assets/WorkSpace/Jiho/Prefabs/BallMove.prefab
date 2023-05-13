@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1560130932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560130933}
+  m_Layer: 0
+  m_Name: JoyStickDir
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1560130933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560130932}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1234899116995807351}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &167241377793540807
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
-  completeScore: 50
+  completeScore: 10
   spawner: {fileID: 0}
   test: {fileID: 0}
   ball: {fileID: 39496252942964707}
@@ -352,6 +383,7 @@ Transform:
   - {fileID: 2166449418135710349}
   - {fileID: 8287013442888565833}
   - {fileID: 4063477845954202595}
+  - {fileID: 1560130933}
   m_Father: {fileID: 5025990630015165230}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -445,11 +477,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc37fb2b2b2319446899c0fe89c45a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  focusLook: {fileID: 0}
   joyStick: {fileID: 0}
   rb: {fileID: 8125042089222651928}
   ballTf: {fileID: 1234899117790799259}
   ballMoveAssist: {fileID: 1234899116995807351}
   moveDir: {fileID: 3237481928423234138}
+  joyStickDir: {fileID: 1560130933}
   modelPivot: {fileID: 2166449418135710349}
   ballAttatchRbTf: {fileID: 8287013442888565833}
   cameraPoint: {fileID: 4063477845954202595}
@@ -457,10 +491,10 @@ MonoBehaviour:
   ray: {fileID: 4378834488627933686}
   controlActive: 0
   groundTouching: 0
-  rotSpeed: 1
-  rotMul_magnitude: 1
+  rotSpeed: 0.5
   moveSpeed: 30
   moveMaxSpeed: 20
+  breakPower: 0.5
   joyStickInput: {x: 0, y: 0}
   rotResult: 0
   modelHeight: 2

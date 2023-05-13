@@ -6116,37 +6116,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &1560130932
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1560130933}
-  m_Layer: 0
-  m_Name: JoyStickDir
-  m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1560130933
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560130932}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1957750027}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1571674839
 GameObject:
   m_ObjectHideFlags: 0
@@ -6471,10 +6440,6 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 918292615}
-    - target: {fileID: 415396613, guid: 5dfb096bf45d69b498fd3d2fdae41daf, type: 3}
-      propertyPath: completeScore
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 39496252942964707, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
         type: 3}
       propertyPath: joyStick
@@ -6482,48 +6447,13 @@ PrefabInstance:
       objectReference: {fileID: 1710429002}
     - target: {fileID: 39496252942964707, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
         type: 3}
-      propertyPath: rotSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 39496252942964707, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
-        type: 3}
       propertyPath: focusLook
       value: 
       objectReference: {fileID: 1958997850}
-    - target: {fileID: 39496252942964707, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
-        type: 3}
-      propertyPath: breakPower
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 39496252942964707, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
-        type: 3}
-      propertyPath: joyStickDir
-      value: 
-      objectReference: {fileID: 1560130933}
-    - target: {fileID: 1234899116995807351, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5025990630015165230, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
         type: 3}
       propertyPath: m_RootOrder
       value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025990630015165230, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025990630015165230, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025990630015165230, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025990630015165230, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
         type: 3}
@@ -7247,12 +7177,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907897065}
   m_CullTransparentMesh: 1
---- !u!4 &1957750027 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1234899116995807351, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
-    type: 3}
-  m_PrefabInstance: {fileID: 1663402325}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1958997850 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 581373604972061112, guid: 70f7482ec26cb414fad0e5f6107600de,
