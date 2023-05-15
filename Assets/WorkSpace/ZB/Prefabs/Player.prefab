@@ -110,7 +110,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d9e7efe103d0f04ab720ae0b3d7c674, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,17 +205,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0085d7ff8c9804a4f8416bbef87f3267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ray: {fileID: 0}
+  iballTarget_TF: {fileID: 0}
   joyStick: {fileID: 0}
-  rb: {fileID: 3591844576486088702}
-  tf: {fileID: 3591844576486088698}
   lookAt: {fileID: 3591844576868742291}
+  moveTargetTf: {fileID: 0}
+  rbTarget: {fileID: 0}
+  sphereRB_TF: {fileID: 0}
+  sphereModel_TF: {fileID: 0}
+  rotTarget_TF: {fileID: 0}
   moveSpeed: 3
   moveMaxSpeed: 4
   rotSpeed: 1
   rotMul_magnitude: 1
   joyStickInput: {x: 0, y: 0}
   nowVelocity: {x: 0, y: 0, z: 0}
-  rotResult: 0
+  playerBody: {fileID: 0}
+  minBallDist: 0
+  ballDist_Result: {x: 0, y: 0, z: 0}
+  ballDist_BaseOffset: {x: 0, y: 0, z: 0}
+  ballDist_BySize: {x: 0, y: 0, z: 0}
+  ballDist_BySlop: {x: 0, y: 0, z: 0}
 --- !u!1 &3591844576486088645
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +292,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
