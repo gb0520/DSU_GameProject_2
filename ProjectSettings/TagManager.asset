@@ -14,13 +14,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - FakeUI
   - Water
   - UI
   - Shoot
   - Floor
   - item
-  - 
+  - Player
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FakeUI
+    uniqueID: 2271915333
     locked: 0
