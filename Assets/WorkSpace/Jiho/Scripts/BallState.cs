@@ -53,12 +53,12 @@ namespace JH
 
                 if(hit.transform.CompareTag("wall_horizontal"))
                 {
-                    danger_obj.transform.localScale = new Vector3(1f, 2.5f * transform.localScale.y, 2.5f * transform.localScale.z);
+                    danger_obj.transform.localScale = new Vector3(0.01f, 2.5f * transform.localScale.y, 2.5f * transform.localScale.z);
                     danger_obj.transform.position = new Vector3(hit.point.x, transform.position.y, transform.position.z);
                 }
                 else if(hit.transform.CompareTag("wall_vertical"))
                 {
-                    danger_obj.transform.localScale = new Vector3(2.5f * transform.localScale.x, 2.5f * transform.localScale.y, 1f);
+                    danger_obj.transform.localScale = new Vector3(2.5f * transform.localScale.x, 2.5f * transform.localScale.y, 0.01f);
                     danger_obj.transform.position = new Vector3(transform.position.x, transform.position.y, hit.point.z);
                 }
             }
