@@ -11,8 +11,6 @@ public class PlayerHandler : MonoBehaviour, IHandlers
 
     public void OnEnterStage()
     {
-        Debug.LogError("Handler Enter / Player");
-
         //위치초기화
         m_ballMove.SetPlayerPosition(resetPosition.position);
 

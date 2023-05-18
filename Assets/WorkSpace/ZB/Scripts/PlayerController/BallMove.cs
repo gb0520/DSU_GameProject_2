@@ -109,9 +109,9 @@ public class BallMove : MonoBehaviour
                 rb.velocity *= breakPower;
             }
 
-            ballMoveAssist.transform.position = ballTf.transform.position;
             ray.ChangeDir(moveDir.transform.position - ballMoveAssist.transform.position);
         }
+        ballMoveAssist.transform.position = ballTf.transform.position;
     }
     private void Awake()
     {

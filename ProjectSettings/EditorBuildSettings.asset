@@ -5,18 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/WorkSpace/Main/Scenes/lobby.unity
+    guid: 65678e89255b15b45ab6d8df48fd2e84
+  - enabled: 1
+    path: Assets/WorkSpace/Main/Scenes/1_Stage.unity
+    guid: 8a2a6a19dd8abc24faa4654f2c37916f
   - enabled: 1
     path: Assets/WorkSpace/ZB/Scenes/StageTest_Recent.unity
     guid: ec6fc405e3c4b2a4a8ece1bad0fef6dd
-  - enabled: 1
-    path: Assets/WorkSpace/Main/Scenes/Title_Recent_Editing.unity
-    guid: 02fc295f51ba07547b6d370a24f3fcf3
-  - enabled: 1
-    path: Assets/WorkSpace/Main/Scenes/StageTest_Recent.unity
-    guid: f6e0909c122e77140888c1ce8544be98
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 09fff7f2c5c8c8a4ca49e53546c3be6e,
       type: 2}

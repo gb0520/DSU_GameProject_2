@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "ce0817180b780c080b7e",
         "name": "com.DefaultCompany.DSU_GameProject_2",
-        "processId": 19482,
+        "processId": 3011,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -48,6 +48,12 @@
             "deviceId": "ce0817180b780c080b7e",
             "name": "com.DefaultCompany.DSU_GameProject_2",
             "processId": 19482,
+            "exited": false
+        },
+        {
+            "deviceId": "ce0817180b780c080b7e",
+            "name": "com.DefaultCompany.DSU_GameProject_2",
+            "processId": 3011,
             "exited": false
         }
     ],

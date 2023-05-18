@@ -28,19 +28,26 @@ namespace ZB
         Vector2 m_vec2_originalSize_Clear;
         Vector2 m_vec2_originalSize_Over;
 
+        [SerializeField] string m_sceneName_Main;
+        [SerializeField] string m_sceneName_Restart;
+        [SerializeField] string m_sceneName_Next;
+
         public void OnBtnClicked_Restart()
         {
             m_uEvent_Restart.Invoke();
+            Managers.instance.SceneMove.SceneMoveStart(m_sceneName_Restart);
         }
 
         public void OnBtnClicked_GoSceneMain()
         {
             m_uEvent_GoSceneMain.Invoke();
+            Managers.instance.SceneMove.SceneMoveStart(m_sceneName_Main);
         }
 
         public void OnBtnClicked_GoSceneNextStage()
         {
             m_uEvent_GoSceneNextStage.Invoke();
+            Managers.instance.SceneMove.SceneMoveStart(m_sceneName_Next);
         }
 
         public void WindowActive_Clear(bool active)
@@ -54,8 +61,6 @@ namespace ZB
 
         void Awake()
         {
-            m_uEvent_Restart.AddListener(FindObjectOfType<StageManager>().OnEnterStage);
-
             m_vec2_originalSize_Clear = m_rtf_window_Clear.transform.localScale;
             m_vec2_originalSize_Over = m_rtf_window_Over.transform.localScale;
         }

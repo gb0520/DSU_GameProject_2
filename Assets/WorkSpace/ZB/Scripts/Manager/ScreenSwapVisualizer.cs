@@ -12,6 +12,7 @@ namespace ZB
         public bool Fading { get { return m_fading; } }
 
         [SerializeField] Transform m_tf_Mask;
+        [SerializeField] Transform m_tf_Masked;
 
         [Header("È®ÀÎ¿ë")]
         [SerializeField] bool m_fading;
@@ -47,6 +48,9 @@ namespace ZB
         {
             m_fading = true;
 
+            m_tf_Mask.gameObject.SetActive(true);
+            m_tf_Masked.gameObject.SetActive(true);
+
             //Fade In
             m_tf_Mask.DOKill();
             m_tf_Mask.localScale = new Vector2(m_circleSize, m_circleSize);
@@ -54,20 +58,28 @@ namespace ZB
 
             yield return MoveCycle_WFS;
 
+            OnFadeEnded.Invoke();
+
             //FadeOut
             m_tf_Mask.DOKill();
             m_tf_Mask.localScale = Vector2.zero;
-            m_tf_Mask.DOScale(new Vector2(m_circleSize, m_circleSize), m_duration_FadeOut).SetUpdate(true).SetEase(Ease.InQuart);
+            m_tf_Mask.DOScale(new Vector2(m_circleSize, m_circleSize), m_duration_FadeOut).SetUpdate(true).SetEase(Ease.InQuart).OnComplete(()=>
+            {
+                m_fading = false;
+                OnFadeEnded.RemoveAllListeners();
 
-            m_fading = false;
-            OnFadeEnded.Invoke();
-            OnFadeEnded.RemoveAllListeners();
+                m_tf_Mask.gameObject.SetActive(false);
+                m_tf_Masked.gameObject.SetActive(false);
+            });
         }
 
         private void Awake()
         {
             OnFadeEnded = new UnityEvent();
             MoveCycle_WFS = new WaitForSecondsRealtime(m_duration_LoadWait);
+
+            m_tf_Mask.gameObject.SetActive(false);
+            m_tf_Masked.gameObject.SetActive(false);
         }
     }
 }
