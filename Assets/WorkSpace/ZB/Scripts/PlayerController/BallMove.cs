@@ -78,8 +78,11 @@ public class BallMove : MonoBehaviour
             if (groundTouching)
             {
                 //* 공이동
-                rb.AddForce(rotDir.normalized * moveSpeed * joyStickInput.magnitude);
+                Vector3 moveDir;
+                //moveDir = rotDir.normalized;
+                moveDir = joyStickDir.position - ballMoveAssist.position;
 
+                rb.AddForce(moveDir.normalized * moveSpeed * joyStickInput.magnitude);
                 //최대속도 제한
                 {
                     if (rb.velocity.x > moveMaxSpeed)
@@ -107,7 +110,7 @@ public class BallMove : MonoBehaviour
             {
                 breaked = true;
                 rb.velocity *= breakPower;
-            }
+            } 
 
             ray.ChangeDir(moveDir.transform.position - ballMoveAssist.transform.position);
         }
