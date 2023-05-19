@@ -22,8 +22,9 @@ public class PlayerAnimation : MonoBehaviour
         if (ball.JoyStickInput != Vector2.zero)
         {
             if(!animator.GetBool("isMove")) animator.SetBool("isMove", true);
-            else if(animator.GetBool("isMove")) animator.SetBool("isMove", false);
+            
         }
+        else if (animator.GetBool("isMove")) animator.SetBool("isMove", false);
     }
 
 }

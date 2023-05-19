@@ -111,10 +111,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139136523288237086}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4465141, y: 1, z: 1.702342}
+  m_Size: {x: 1.98, y: 1, z: 2.13}
   m_Center: {x: -0.001543045, y: 0, z: -0.06198421}
 --- !u!114 &6635161010092477470
 MonoBehaviour:
@@ -147,7 +147,8 @@ GameObject:
   - component: {fileID: 7973563501751455552}
   - component: {fileID: 2266426145313326495}
   - component: {fileID: 48027774654715502}
-  m_Layer: 0
+  - component: {fileID: 4522057513716022985}
+  m_Layer: 8
   m_Name: prop_2_pdf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,3 +220,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4522057513716022985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8314163181435048973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.30164838, y: 0.27611488, z: 0.36980203}
+  m_Center: {x: 0, y: 0.000000014901161, z: 0.000000007450582}

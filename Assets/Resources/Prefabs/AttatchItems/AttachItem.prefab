@@ -59,7 +59,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699474631806275071}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1, z: 1.5}
@@ -95,7 +95,8 @@ GameObject:
   - component: {fileID: 6282960527017842931}
   - component: {fileID: 3328290819864858846}
   - component: {fileID: 12867591396610935}
-  m_Layer: 0
+  - component: {fileID: 465161256235113327}
+  m_Layer: 8
   m_Name: prop_3_pdf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,3 +168,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &465161256235113327
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3982022253283277774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.31, z: 0.65}
+  m_Center: {x: -0.000000007450581, y: -6.661338e-16, z: 0.4324084}

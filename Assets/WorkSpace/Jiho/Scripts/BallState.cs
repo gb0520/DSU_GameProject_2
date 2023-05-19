@@ -68,13 +68,13 @@ namespace JH
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
-            if (collision.gameObject.tag == "fieldItem")
+            if (other.gameObject.tag == "fieldItem")
             {
-                Attach attach = collision.gameObject.GetComponent<Attach>();
+                Attach attach = other.gameObject.GetComponent<Attach>();
 
-                if(attach.Least <= currentScore) //object_getPoint <= currentScore
+                if (attach.Least <= currentScore) //object_getPoint <= currentScore
                 {
                     Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[1], false);
                     int temp = attach.Index;
@@ -91,15 +91,48 @@ namespace JH
                 }
             }
 
-            if(collision.gameObject.tag == "unAttach")
+            if (other.gameObject.tag == "unAttach")
             {
                 Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[2], false);
-                Attach attach = collision.gameObject.GetComponent<Attach>();
+                Attach attach = other.gameObject.GetComponent<Attach>();
 
                 PopAttach(attach.Count);
                 ObjectPool.instance.ReturnPool(attach.gameObject, attach.Index);
             }
         }
+
+        //private void OnCollisionEnter(Collision collision)
+        //{
+        //    if (collision.gameObject.tag == "fieldItem")
+        //    {
+        //        Attach attach = collision.gameObject.GetComponent<Attach>();
+
+        //        if(attach.Least <= currentScore) //object_getPoint <= currentScore
+        //        {
+        //            Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[1], false);
+        //            int temp = attach.Index;
+        //            float attachSize = attach.Size;
+        //            float attachScore = attach.Score;
+        //            attach.ball = this;
+
+        //            BallUpdate(attachSize, attachScore);
+        //            tempSize += attachSize;
+        //            attach.gameObject.tag = "pieceItem";
+        //            attach.gameObject.layer = 8;
+        //            attach.gameObject.transform.position = this.gameObject.transform.position;
+        //            GetAttach(attach);
+        //        }
+        //    }
+
+        //    if(collision.gameObject.tag == "unAttach")
+        //    {
+        //        Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[2], false);
+        //        Attach attach = collision.gameObject.GetComponent<Attach>();
+
+        //        PopAttach(attach.Count);
+        //        ObjectPool.instance.ReturnPool(attach.gameObject, attach.Index);
+        //    }
+        //}
 
         private void GetAttach(Attach _attach)
         {
