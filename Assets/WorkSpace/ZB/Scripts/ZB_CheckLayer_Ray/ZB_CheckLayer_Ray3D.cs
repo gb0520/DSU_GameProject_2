@@ -46,6 +46,14 @@ public class ZB_CheckLayer_Ray3D : MonoBehaviour
         return touching;
     }
 
+    //접촉한 대상과의 거리
+    public float DistToTarget()
+    {
+        return lastTouchedTransform != null ?
+            Vector3.Distance(transform.position, lastTouchedPosition) :
+            -1;
+    }
+
     //레이캐스트의 방향바꾸기 : 방향만
     public void ChangeDir(Vector3 dir)
     {
@@ -53,7 +61,7 @@ public class ZB_CheckLayer_Ray3D : MonoBehaviour
     }
 
     //레이캐스트의 방향바꾸기 : 방향, 길이
-    public void ChangeDir(Vector2 dir, float maxDistance)
+    public void ChangeDir(Vector3 dir, float maxDistance)
     {
         this.dir = dir.normalized;
         this.maxDistance = maxDistance;
