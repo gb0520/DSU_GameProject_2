@@ -147,16 +147,16 @@ public class BallMove : MonoBehaviour
         ballTf.localScale = ballAttatchRbTf.localScale;
 
         //공크기가 캐릭터 모델링 크기 * 1.5f 보다 작을경우
-        if (radius < modelHeight * 1.5f)
-        {
-            modelPivot.localPosition = new Vector3(0, -radius, -radius - modelWidth / 2);
-        }
+        //if (radius < modelHeight * 1.5f)
+        //{
+        //    modelPivot.localPosition = new Vector3(0, -radius, -radius - modelWidth / 2);
+        //}
 
         //공크기가 캐릭터 모델링 크기 * 1.5f 보다 클경우
-        else
-        {
-            StartCoroutine(delayNRePos());
-        }
+        //else
+        //{
+        //    StartCoroutine(delayNRePos());
+        //}
 
         IEnumerator delayNRePos()
         {

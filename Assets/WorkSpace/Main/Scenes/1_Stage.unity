@@ -18517,6 +18517,21 @@ PrefabInstance:
       propertyPath: focusLook
       value: 
       objectReference: {fileID: 1958997850}
+    - target: {fileID: 2166449418135710349, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166449418135710349, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1271
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166449418135710349, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5025990630015165230, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
         type: 3}
       propertyPath: m_RootOrder
@@ -19942,7 +19957,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 5
   far clip plane: 1000
   field of view: 60
   orthographic: 0
