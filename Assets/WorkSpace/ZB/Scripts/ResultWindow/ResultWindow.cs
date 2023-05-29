@@ -61,16 +61,24 @@ namespace ZB
 
         public void OnBtnClicked_Resume()
         {
-            m_rtf_window_Pause.GetComponent<DOTweenAnimation>().DORestartById("Resume");
             Time.timeScale = 1;
+            m_rtf_window_Pause.GetComponent<DOTweenAnimation>().DORestartById("Resume");
+            transform.DOLocalMove(Vector3.zero, 0.3f).OnComplete(() =>
+            {
+                m_rtf_window_Pause.gameObject.SetActive(false);
+            });
 
         }
 
         public void WindowActive_Pause()
         {
+            if (m_rtf_window_Pause.gameObject.activeSelf) return;
             m_rtf_window_Pause.gameObject.SetActive(true);
             m_rtf_window_Pause.GetComponent<DOTweenAnimation>().DORestartById("Pause");
-            Time.timeScale = 0;
+            transform.DOLocalMove(Vector3.zero, 0.3f).OnComplete(() =>
+            {
+                Time.timeScale = 0; 
+            });
         }
 
         public void WindowActive_Clear(bool active)
