@@ -15,7 +15,6 @@ namespace JH
         //[SerializeField] private Image clearImage;
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI percentText;
-        [SerializeField] private DOTweenAnimation percentDotween;
         private float currentScore;
         private float completeScore;
         private float scorePercent;
@@ -24,7 +23,6 @@ namespace JH
 
         public void OnScoreCheckUpdate()
         {
-            percentDotween.DORestartById("plus");
             currentScore = ball.CurrentScore;
             completeScore = ball.CompleteScore;
             if (currentScore >= completeScore)
