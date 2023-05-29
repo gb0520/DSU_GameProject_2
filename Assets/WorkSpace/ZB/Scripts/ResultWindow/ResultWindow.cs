@@ -22,6 +22,7 @@ namespace ZB
 
         [SerializeField] RectTransform m_rtf_window_Clear;
         [SerializeField] RectTransform m_rtf_window_Over;
+        [SerializeField] RectTransform m_rtf_window_Pause;
 
         [SerializeField] float m_duration_windowFade;
 
@@ -31,6 +32,14 @@ namespace ZB
         [SerializeField] string m_sceneName_Main;
         [SerializeField] string m_sceneName_Restart;
         [SerializeField] string m_sceneName_Next;
+
+        private void Update() //Å×½ºÆ®
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                WindowActive_Pause();
+            }
+        }
 
         public void OnBtnClicked_Restart()
         {
@@ -48,6 +57,28 @@ namespace ZB
         {
             m_uEvent_GoSceneNextStage.Invoke();
             Managers.instance.SceneMove.SceneMoveStart(m_sceneName_Next);
+        }
+
+        public void OnBtnClicked_Resume()
+        {
+            Time.timeScale = 1;
+            m_rtf_window_Pause.GetComponent<DOTweenAnimation>().DORestartById("Resume");
+            transform.DOLocalMove(Vector3.zero, 0.3f).OnComplete(() =>
+            {
+                m_rtf_window_Pause.gameObject.SetActive(false);
+            });
+
+        }
+
+        public void WindowActive_Pause()
+        {
+            if (m_rtf_window_Pause.gameObject.activeSelf) return;
+            m_rtf_window_Pause.gameObject.SetActive(true);
+            m_rtf_window_Pause.GetComponent<DOTweenAnimation>().DORestartById("Pause");
+            transform.DOLocalMove(Vector3.zero, 0.3f).OnComplete(() =>
+            {
+                Time.timeScale = 0; 
+            });
         }
 
         public void WindowActive_Clear(bool active)
