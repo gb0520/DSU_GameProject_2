@@ -146,29 +146,9 @@ public class BallMove : MonoBehaviour
 
         ballTf.localScale = ballAttatchRbTf.localScale;
 
-        //공크기가 캐릭터 모델링 크기 * 1.5f 보다 작을경우
-        if (radius < modelHeight * 1.5f)
-        {
-            modelPivot.localPosition = new Vector3(0, -radius, -radius - modelWidth / 2);
-        }
 
-        //공크기가 캐릭터 모델링 크기 * 1.5f 보다 클경우
-        else
-        {
-            StartCoroutine(delayNRePos());
-        }
-
-        IEnumerator delayNRePos()
-        {
-            yield return null;
-            modelPivot.position = ray.GetLastTouchedPosition()
-                + (ray.GetLastTouchedPosition() - ballMoveAssist.transform.position).normalized * modelWidth * 0.5f
-                + new Vector3(0, -radius, 0);
-            modelPivot.position = ray.GetLastTouchedPosition()
-                + new Vector3(((ray.GetLastTouchedPosition() - ballMoveAssist.transform.position).normalized * modelWidth * 0.5f).x, 0,
-                ((ray.GetLastTouchedPosition() - ballMoveAssist.transform.position).normalized * modelWidth * 0.5f).z)
-                + new Vector3(0, -modelHeight, 0);
-        }
+        //주인공 모델링 위치조정
+        modelPivot.transform.localPosition = new Vector3(0, radius, 0);
     }
 
     public void SetPlayerPosition(Vector3 position)
