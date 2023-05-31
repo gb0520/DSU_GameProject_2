@@ -48,6 +48,9 @@ public class BallMove : MonoBehaviour
 
     public Vector2 JoyStickInput { get => joyStickInput; }
 
+    public float RotSpeed { set => rotSpeed = value; }
+    public float MoveSpeed { set => moveSpeed = value; }
+
     [Header("땅 밟으며 타임카운트 시작")]
     [SerializeField] bool m_timeCountStartFocusing;
     UnityEvent m_uEvent_TimeCountStart;

@@ -33,6 +33,10 @@ namespace ZB
         [SerializeField] string m_sceneName_Restart;
         [SerializeField] string m_sceneName_Next;
 
+        [SerializeField] Scrollbar moveScrollbar;
+        [SerializeField] Scrollbar rotScrollbar;
+        BallMove ball;
+
         private void Update() //Å×½ºÆ®
         {
             if(Input.GetKeyDown(KeyCode.Escape))
@@ -62,6 +66,8 @@ namespace ZB
         public void OnBtnClicked_Resume()
         {
             Time.timeScale = 1;
+            ball.RotSpeed = rotScrollbar.value;
+            ball.MoveSpeed = moveScrollbar.value * 30;
             m_rtf_window_Pause.GetComponent<DOTweenAnimation>().DORestartById("Resume");
             transform.DOLocalMove(Vector3.zero, 0.3f).OnComplete(() =>
             {
@@ -73,6 +79,7 @@ namespace ZB
         public void WindowActive_Pause()
         {
             if (m_rtf_window_Pause.gameObject.activeSelf) return;
+            if (ball == null) ball = FindObjectOfType<BallMove>();
             m_rtf_window_Pause.gameObject.SetActive(true);
             m_rtf_window_Pause.GetComponent<DOTweenAnimation>().DORestartById("Pause");
             transform.DOLocalMove(Vector3.zero, 0.3f).OnComplete(() =>
