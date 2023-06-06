@@ -9,75 +9,79 @@ namespace ZB
 {
     public class ScreenSwapVisualizer : MonoBehaviour
     {
-        public bool Fading { get { return m_fading; } }
+        public enum State { None, fadeIn, load, fadeOut}
 
         [SerializeField] Transform m_tf_Mask;
         [SerializeField] Transform m_tf_Masked;
 
         [Header("확인용")]
-        [SerializeField] bool m_fading;
+        [SerializeField] State nowState;
+        [SerializeField] float m_current_duration_In;
+        [SerializeField] float m_current_duration_Out;
+        [SerializeField] Ease m_current_ease_In;
+        [SerializeField] Ease m_current_ease_Out;
 
         [Header("변경가능")]
-        [SerializeField] float m_duration_FadeIn;
-        [SerializeField] float m_duration_LoadWait;
-        [SerializeField] float m_duration_FadeOut;
         [SerializeField] float m_circleSize;
 
-        UnityEvent OnFadeEnded;
-
-        public void Fade(UnityAction fadeEndAction = null)
+        public void Fade(UnityEvent fadeEndEvent, float duration_In = 1, float duration_Out = 1, Ease ease_In = Ease.OutQuart, Ease ease_Out = Ease.OutQuart)
         {
-            if (fadeEndAction != null)
-                OnFadeEnded.AddListener(fadeEndAction);
-
-            if (MoveCycle_C != null)
-                StopCoroutine(MoveCycle_C);
-            MoveCycle_C = MoveCycle();
-            StartCoroutine(MoveCycle_C);
-        }
-
-        [ContextMenu("FadeIn")]
-        public void TestFadeIn()
-        {
-            Fade();
-        }
-
-        WaitForSecondsRealtime MoveCycle_WFS;
-        IEnumerator MoveCycle_C;
-        IEnumerator MoveCycle()
-        {
-            m_fading = true;
-
-            m_tf_Mask.gameObject.SetActive(true);
-            m_tf_Masked.gameObject.SetActive(true);
-
-            //Fade In
-            m_tf_Mask.DOKill();
-            m_tf_Mask.localScale = new Vector2(m_circleSize, m_circleSize);
-            m_tf_Mask.DOScale(Vector2.zero, m_duration_FadeIn).SetUpdate(true).SetEase(Ease.InQuart);
-
-            yield return MoveCycle_WFS;
-
-            OnFadeEnded.Invoke();
-
-            //FadeOut
-            m_tf_Mask.DOKill();
-            m_tf_Mask.localScale = Vector2.zero;
-            m_tf_Mask.DOScale(new Vector2(m_circleSize, m_circleSize), m_duration_FadeOut).SetUpdate(true).SetEase(Ease.InQuart).OnComplete(()=>
+            if (nowState == State.None || nowState == State.fadeIn)
             {
-                m_fading = false;
-                OnFadeEnded.RemoveAllListeners();
+                m_current_duration_In = duration_In;
+                m_current_duration_Out = duration_Out;
+                m_current_ease_In = ease_In;
+                m_current_ease_Out = ease_Out;
 
-                m_tf_Mask.gameObject.SetActive(false);
-                m_tf_Masked.gameObject.SetActive(false);
-            });
+                m_tf_Mask.gameObject.SetActive(true);
+                m_tf_Masked.gameObject.SetActive(true);
+
+                //FadeIn
+                nowState = State.fadeIn;
+                m_tf_Mask.DOKill();
+                m_tf_Mask.localScale = new Vector2(m_circleSize, m_circleSize);
+                m_tf_Mask.DOScale(Vector2.zero, m_current_duration_In).SetUpdate(true).SetEase(m_current_ease_In).OnComplete(() =>
+                {
+                    fadeEndEvent.Invoke();
+                    nowState = State.load;
+                });
+
+                //FadeOut
+                transform.DOLocalMove(Vector2.zero, m_current_duration_In + 1).OnComplete(() =>
+                {
+                    nowState = State.fadeOut;
+                    m_tf_Mask.DOKill();
+                    m_tf_Mask.localScale = Vector2.zero;
+                    m_tf_Mask.DOScale(new Vector2(m_circleSize, m_circleSize), m_current_duration_Out).SetUpdate(true).SetEase(m_current_ease_Out).OnComplete(() =>
+                    {
+                        nowState = State.None;
+
+                        m_tf_Mask.gameObject.SetActive(false);
+                        m_tf_Masked.gameObject.SetActive(false);
+                    });
+                });
+            }
+        }
+        public void FadeCancel()
+        {
+            //fadein 일때만 취소가능
+            if (nowState == State.fadeIn)
+            {
+                nowState = State.fadeOut;
+                transform.DOKill();
+                m_tf_Mask.DOKill();
+                m_tf_Mask.DOScale(new Vector2(m_circleSize, m_circleSize), m_current_duration_Out).SetUpdate(true).SetEase(m_current_ease_Out).OnComplete(() =>
+                {
+                    nowState = State.None;
+
+                    m_tf_Mask.gameObject.SetActive(false);
+                    m_tf_Masked.gameObject.SetActive(false);
+                });
+            }
         }
 
         private void Awake()
         {
-            OnFadeEnded = new UnityEvent();
-            MoveCycle_WFS = new WaitForSecondsRealtime(m_duration_LoadWait);
-
             m_tf_Mask.gameObject.SetActive(false);
             m_tf_Masked.gameObject.SetActive(false);
         }

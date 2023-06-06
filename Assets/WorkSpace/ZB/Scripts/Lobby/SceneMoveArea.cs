@@ -1,40 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class SceneMoveArea : MonoBehaviour
+namespace ZB
 {
-    [SerializeField] string m_sceneName;
-    [SerializeField] float m_areaEnteringTime;
-
-    public void OnEnter()
+    public class SceneMoveArea : MonoBehaviour
     {
-        if (SceneMoveCycle_C != null)
+        [SerializeField] string m_sceneName;
+        [SerializeField] float m_areaEnteringTime;
+
+        public void OnEnter()
         {
-            StopCoroutine(SceneMoveCycle_C);
+            Managers.instance.ScreenSwap.Fade(
+                Managers.instance.SceneMove.LoadSceneEvent(m_sceneName),
+                2, 1, Ease.InQuart, Ease.OutQuart);
         }
-        SceneMoveCycle_C = SceneMoveCycle();
-        StartCoroutine(SceneMoveCycle_C);
-    }
 
-    public void OnExit()
-    {
-        if (SceneMoveCycle_C != null)
+        public void OnExit()
         {
-            StopCoroutine(SceneMoveCycle_C);
+            Managers.instance.ScreenSwap.FadeCancel();
         }
-    }
-
-    WaitForSeconds SceneMoveCycle_WFS;
-    IEnumerator SceneMoveCycle_C;
-    IEnumerator SceneMoveCycle()
-    {
-        yield return SceneMoveCycle_WFS;
-        ZB.Managers.instance.SceneMove.SceneMoveStart(m_sceneName);
-    }
-
-    private void Awake()
-    {
-        SceneMoveCycle_WFS = new WaitForSeconds(m_areaEnteringTime);
     }
 }

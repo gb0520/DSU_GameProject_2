@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 namespace ZB
 {
@@ -11,19 +13,23 @@ namespace ZB
 
         public void SceneMoveStart(string sceneName)
         {
+            Managers.instance.ScreenSwap.Fade(LoadSceneEvent(sceneName), 1, 1, Ease.InQuad, Ease.OutQuart);
+        }
+
+        public UnityEvent LoadSceneEvent(string sceneName)
+        {
             currentInputSceneName = sceneName;
-            Managers.instance.ScreenSwap.Fade(LoadScene);
+
+            UnityEvent unityEvent = new UnityEvent();
+            unityEvent.AddListener(()=>SceneManager.LoadScene(sceneName));
+            return unityEvent;
         }
 
-        void LoadScene()
+        public UnityAction LoadSceneAction(string sceneName)
         {
-            SceneManager.LoadScene(currentInputSceneName);
-        }
+            currentInputSceneName = sceneName;
 
-        [ContextMenu("TestLoadScene")]
-        public void Test()
-        {
-            SceneMoveStart("StageTest_Recent");
+            return new UnityAction(()=>SceneManager.LoadScene(sceneName));
         }
     }
 }

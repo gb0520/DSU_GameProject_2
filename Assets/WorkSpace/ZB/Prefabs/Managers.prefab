@@ -705,8 +705,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_tf_Mask: {fileID: 2043542508}
   m_tf_Masked: {fileID: 339449599}
-  m_fading: 0
-  m_duration_FadeIn: 2
-  m_duration_LoadWait: 2
-  m_duration_FadeOut: 0.85
-  m_circleSize: 1
+  nowState: 0
+  m_current_duration_In: 0
+  m_current_duration_Out: 0
+  m_current_ease_In: 0
+  m_current_ease_Out: 0
+  m_circleSize: 0.55
