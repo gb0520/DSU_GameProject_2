@@ -28,7 +28,7 @@ public class ObjectHandler : MonoBehaviour, IHandlers
     public void OnExitStage()
     {
         ballState.CurrentScore = 0;
-        ballState.BallSizeUp((ballState.tempSize) * -1);
+        //ballState.BallSizeUp((ballState.tempSize) * -1);
 
         spawner.ReturnObject();
     }

@@ -21,7 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shader Graphs_New Shader Graph
-  m_Shader: {fileID: -6465566751694194690, guid: 793fa529b55711e4bbe7608c0aa67a83, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 793fa529b55711e4bbe7608c0aa67a83,
+    type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 6
@@ -120,11 +121,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Back_Color: {r: 0.04268996, g: 0.04268996, b: 0.24708432, a: 1}
+    - _Back_Color: {r: 0.23295164, g: 0.23295164, b: 1.5930887, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Fresenel_Color: {r: 3.1302335, g: 0.90111625, b: 0.42819244, a: 1}
-    - _Front_Color: {r: 4.874747, g: 7.217854, b: 26.498621, a: 1}
+    - _Fresenel_Color: {r: 16.94838, g: 4.880423, b: 2.3958442, a: 1}
+    - _Front_Color: {r: 2.686209, g: 3.9546964, b: 14.251831, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

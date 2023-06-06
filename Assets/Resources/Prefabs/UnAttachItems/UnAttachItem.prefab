@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1547811480416015834}
   - component: {fileID: -6258299474770647780}
   - component: {fileID: 4412173820107878956}
+  - component: {fileID: -6241417450097199646}
   m_Layer: 0
   m_Name: UnAttachItem
   m_TagString: unAttach
@@ -84,6 +85,24 @@ MonoBehaviour:
   test: 6.7
   isShoot: 0
   ball: {fileID: 0}
+--- !u!114 &-6241417450097199646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351414271185949950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7514716121198721517
 GameObject:
   m_ObjectHideFlags: 0
