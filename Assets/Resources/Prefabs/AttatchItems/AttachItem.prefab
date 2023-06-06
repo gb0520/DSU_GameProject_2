@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1165976443218332891}
   - component: {fileID: 4939794785302351593}
   - component: {fileID: 4921988288199824895}
+  - component: {fileID: 5099948926313671095}
+  - component: {fileID: 5976970053823508540}
   m_Layer: 0
   m_Name: AttachItem
   m_TagString: fieldItem
@@ -84,6 +86,42 @@ MonoBehaviour:
   test: 6.7
   isShoot: 0
   ball: {fileID: 0}
+--- !u!114 &5099948926313671095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699474631806275071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 0.5104327, b: 1, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &5976970053823508540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699474631806275071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d87c5ab9fea92cf4796fc575283c7899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Resizeable: 1
+  targetOutLine: {fileID: 5099948926313671095}
+  targetAttach: {fileID: 4921988288199824895}
+  lineSize: 10
+  resizeSpeed: 20
+  entering: 0
 --- !u!1 &3982022253283277774
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6258299474770647780}
   - component: {fileID: 4412173820107878956}
   - component: {fileID: -6241417450097199646}
+  - component: {fileID: 1492417012061217503}
   m_Layer: 0
   m_Name: UnAttachItem
   m_TagString: unAttach
@@ -103,6 +104,24 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1492417012061217503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351414271185949950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d87c5ab9fea92cf4796fc575283c7899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Resizeable: 1
+  targetOutLine: {fileID: -6241417450097199646}
+  targetAttach: {fileID: 4412173820107878956}
+  lineSize: 10
+  resizeSpeed: 20
+  entering: 0
 --- !u!1 &7514716121198721517
 GameObject:
   m_ObjectHideFlags: 0

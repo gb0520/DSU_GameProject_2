@@ -88,6 +88,11 @@ namespace JH
                     attach.gameObject.layer = 8;
                     attach.gameObject.transform.position = this.gameObject.transform.position;
                     GetAttach(attach);
+
+                    //아웃라인 비활성화
+                    ZB.OutLineResize.Resize resize;
+                    if (attach.TryGetComponent(out resize))
+                        resize.Active(false);
                 }
             }
 
@@ -150,6 +155,11 @@ namespace JH
                 temp.gameObject.tag = "null";
                 //temp.gameObject.layer = 0;
                 BallUpdate(temp.Size * -1, temp.Score * -1);
+
+                //아웃라인 활성화
+                ZB.OutLineResize.Resize resize;
+                if (temp.TryGetComponent(out resize))
+                    resize.Active(true);
             }
         }
 
