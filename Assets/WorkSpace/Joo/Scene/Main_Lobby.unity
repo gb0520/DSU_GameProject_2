@@ -862,7 +862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_sceneName: Tutorial_1_stage
-  m_areaEnteringTime: 3
+  m_areaEnteringTime: 2
 --- !u!4 &1103930824
 Transform:
   m_ObjectHideFlags: 0
@@ -2010,7 +2010,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: cd1f3b54892116a4aa084dcee170ee5e, type: 3}
+      objectReference: {fileID: 8300000, guid: 182846e1a531e93438e587edbe1dd001, type: 3}
     - target: {fileID: 3053614670205790349, guid: 4d8294a9e4aabdb42a9922d75bba451c,
         type: 3}
       propertyPath: m_Name
