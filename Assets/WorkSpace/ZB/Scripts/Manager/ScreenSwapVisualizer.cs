@@ -47,7 +47,7 @@ namespace ZB
                 });
 
                 //FadeOut
-                transform.DOLocalMove(Vector2.zero, m_current_duration_In + 1).OnComplete(() =>
+                transform.DOLocalMove(Vector2.zero, m_current_duration_In + 1).SetUpdate(true).OnComplete(() =>
                 {
                     nowState = State.fadeOut;
                     m_tf_Mask.DOKill();
