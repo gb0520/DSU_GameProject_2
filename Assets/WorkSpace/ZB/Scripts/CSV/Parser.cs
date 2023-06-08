@@ -106,6 +106,96 @@ namespace ZB.CSV
             Debug.LogError("Path에 해당하는 파일없음 : " + path);
             return null;
         }
+        public static List<Dictionary<string, string>> ReadSingle(AccessStyle accessStyle, string path)
+        {
+            List<Dictionary<string, string>> result = new List<Dictionary<string, string>>();
+
+            string csvData = "";
+
+            switch (accessStyle)
+            {
+                case AccessStyle.Resources:
+                    TextAsset sourceFile = Resources.Load<TextAsset>(path);
+
+                    if (sourceFile == null)
+                    {
+                        Debug.LogError($"Parser.ReadSingle / ReadByResources / Failed / Path : {path}");
+                        return null;
+                    }
+
+                    StringReader sr = new StringReader(sourceFile.text);
+                    csvData = sr.ReadToEnd();
+                    Debug.LogError($"Parser.ReadSingle / ReadByResources / Success");
+                    break;
+
+                case AccessStyle.PersistentDataPath:
+                    string fullPath = Path.Combine(Application.persistentDataPath, path);
+                    csvData = File.ReadAllText(fullPath);
+                    Debug.LogError($"Parser.ReadSingle / ReadByPersistentDataPath / FullPath : {fullPath}");
+                    break;
+            }
+
+            if (csvData != "")
+            {
+                string temp = "";
+                int index = 0;
+
+                //열 분리시킬 텍스트 떼내기
+                while (csvData[index + 1] != '\n')
+                {
+                    temp += csvData[index++];
+                }
+                string[] textKeys = temp.Split(",");
+                index += 2;
+
+                //리스트 추가 시작
+                bool endLoop = false;
+                while (!endLoop)
+                {
+                    result.Add(new Dictionary<string, string>());
+                    for (int i = 0; i < textKeys.Length; i++)
+                    {
+                        temp = "";
+
+                        //줄바꿈 있는 텍스트일 경우
+                        if (csvData[index] == '\"')
+                        {
+                            index++;
+                            while (csvData[index] != '\"')
+                            {
+                                temp += csvData[index++];
+                            }
+
+                            if (i + 1 >= textKeys.Length)
+                                index += 3;
+                            else
+                                index += 2;
+                        }
+
+                        //줄바꿈 없는 텍스트일 경우
+                        else
+                        {
+                            while (csvData[index] != ',' && csvData[index] != '\n')
+                            {
+                                temp += csvData[index++];
+                            }
+                            index++;
+                        }
+                        result[result.Count - 1].Add(textKeys[i], temp);
+
+                        if (index + 1 >= csvData.Length)
+                        {
+                            endLoop = true;
+                            break;
+                        }
+                    }
+                }
+                return result;
+            }
+            Debug.LogError("Path에 해당하는 파일없음 : " + path);
+            return null;
+        }
+
         public static List<List<Dictionary<string, string>>> ReadMultipleByResources(string path, out string[] fileNames)
         {
             List<List<Dictionary<string, string>>> result = new List<List<Dictionary<string, string>>>();
@@ -184,6 +274,20 @@ namespace ZB.CSV
             }
 
             return result;
+        }
+        public static bool Exist(AccessStyle accessStyle, string path)
+        {
+            switch (accessStyle)
+            {
+                case AccessStyle.Resources:
+                    TextAsset sourceFile = Resources.Load<TextAsset>(path);
+                    return sourceFile != null;
+
+                case AccessStyle.PersistentDataPath:
+                    string fullPath = Path.Combine(Application.persistentDataPath, path);
+                    return File.Exists(fullPath);
+            }
+            return false;
         }
 
         public static void WriteSingle(AccessStyle accesStyle, string path, List<Dictionary<string,string>> data, bool canOverwrite = false)
