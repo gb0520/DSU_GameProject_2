@@ -658,7 +658,15 @@ MonoBehaviour:
   - audio: {fileID: 8300000, guid: 5ccba717d06567144889fd40eeb6fe0c, type: 3}
     audioName: minus
   - audio: {fileID: 8300000, guid: 182846e1a531e93438e587edbe1dd001, type: 3}
+    audioName: lobby
+  - audio: {fileID: 8300000, guid: bcc722ae1e4daae47be95f9c9e1b1b28, type: 3}
     audioName: 1_Stage
+  - audio: {fileID: 8300000, guid: e903e959f3404a64796481bacb6f3305, type: 3}
+    audioName: Tutorial_1_stage
+  - audio: {fileID: 8300000, guid: 986a97ee72f0ca846b49b0e9d1927da1, type: 3}
+    audioName: Tutorial_2_stage
+  - audio: {fileID: 8300000, guid: cd1f3b54892116a4aa084dcee170ee5e, type: 3}
+    audioName: Tutorial_3_stage
   audioSources:
   - {fileID: 2928959644895677627}
   - {fileID: 3494416472254015293}

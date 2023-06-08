@@ -6292,6 +6292,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1128675915831827092, guid: 67fcaf9f44c7d394683831e3c7638e0a,
+        type: 3}
+      propertyPath: audioDatas.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1128675915831827092, guid: 67fcaf9f44c7d394683831e3c7638e0a,
+        type: 3}
+      propertyPath: audioDatas.Array.data[3].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 182846e1a531e93438e587edbe1dd001, type: 3}
+    - target: {fileID: 1128675915831827092, guid: 67fcaf9f44c7d394683831e3c7638e0a,
+        type: 3}
+      propertyPath: audioDatas.Array.data[3].audioName
+      value: Tutorial_1_stage
+      objectReference: {fileID: 0}
     - target: {fileID: 2227685724611478356, guid: 67fcaf9f44c7d394683831e3c7638e0a,
         type: 3}
       propertyPath: danger_obj
