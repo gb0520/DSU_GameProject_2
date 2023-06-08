@@ -15,6 +15,10 @@ namespace ZB
         {
             Managers.instance.ScreenSwap.Fade(LoadSceneEvent(sceneName), 1, 1, Ease.InQuad, Ease.OutQuart);
         }
+        public void SceneMoveDirectly(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
 
         public UnityEvent LoadSceneEvent(string sceneName)
         {
