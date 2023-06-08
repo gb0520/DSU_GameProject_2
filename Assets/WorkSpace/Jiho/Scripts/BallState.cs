@@ -19,6 +19,7 @@ namespace JH
         [SerializeField] private LayerMask wallLayer;
         [SerializeField] private GameObject danger_obj;
         [SerializeField] private GameObject ray_obj;
+        [SerializeField] private ParticleSystem particle;
 
         private Ray ray;
         RaycastHit hit;
@@ -64,7 +65,7 @@ namespace JH
             }
             else
             {
-                danger_obj.SetActive(false);
+                if(danger_obj != null) danger_obj.SetActive(false);
             }
         }
 
@@ -76,7 +77,7 @@ namespace JH
 
                 if (attach.Least <= currentScore) //object_getPoint <= currentScore
                 {
-                    Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[1], false);
+                    Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.audioDictionary["plus"], false);
                     int temp = attach.Index;
                     float attachSize = attach.Size;
                     float attachScore = attach.Score;
@@ -98,7 +99,7 @@ namespace JH
 
             if (other.gameObject.tag == "unAttach")
             {
-                Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[2], false);
+                Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.audioDictionary["minus"], false);
                 Attach attach = other.gameObject.GetComponent<Attach>();
 
                 PopAttach(attach.Count);
@@ -106,38 +107,18 @@ namespace JH
             }
         }
 
-        //private void OnCollisionEnter(Collision collision)
-        //{
-        //    if (collision.gameObject.tag == "fieldItem")
-        //    {
-        //        Attach attach = collision.gameObject.GetComponent<Attach>();
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.transform.gameObject.layer == 24)
+            {
+                if (collision.transform.CompareTag("Floor")) return;
+                ContactPoint contact = collision.contacts[0];
+                Vector3 pos = contact.point;
 
-        //        if(attach.Least <= currentScore) //object_getPoint <= currentScore
-        //        {
-        //            Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[1], false);
-        //            int temp = attach.Index;
-        //            float attachSize = attach.Size;
-        //            float attachScore = attach.Score;
-        //            attach.ball = this;
-
-        //            BallUpdate(attachSize, attachScore);
-        //            tempSize += attachSize;
-        //            attach.gameObject.tag = "pieceItem";
-        //            attach.gameObject.layer = 8;
-        //            attach.gameObject.transform.position = this.gameObject.transform.position;
-        //            GetAttach(attach);
-        //        }
-        //    }
-
-        //    if(collision.gameObject.tag == "unAttach")
-        //    {
-        //        Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.clips[2], false);
-        //        Attach attach = collision.gameObject.GetComponent<Attach>();
-
-        //        PopAttach(attach.Count);
-        //        ObjectPool.instance.ReturnPool(attach.gameObject, attach.Index);
-        //    }
-        //}
+                particle.transform.position = pos;
+                particle.Play();
+            }
+        }
 
         private void GetAttach(Attach _attach)
         {

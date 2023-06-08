@@ -10,6 +10,7 @@ TagManager:
   - unAttach
   - wall_vertical
   - wall_horizontal
+  - Floor
   layers:
   - Default
   - TransparentFX

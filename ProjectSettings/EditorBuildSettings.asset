@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WorkSpace/Main/Scenes/1_Stage.unity
     guid: 8a2a6a19dd8abc24faa4654f2c37916f
-  - enabled: 1
-    path: Assets/WorkSpace/ZB/Scenes/StageTest_Recent.unity
-    guid: ec6fc405e3c4b2a4a8ece1bad0fef6dd
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 09fff7f2c5c8c8a4ca49e53546c3be6e,
       type: 2}
