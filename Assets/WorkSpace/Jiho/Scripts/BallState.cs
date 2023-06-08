@@ -85,14 +85,15 @@ namespace JH
 
                     BallUpdate(attachSize, attachScore);
                     tempSize += attachSize;
-                    attach.gameObject.tag = "pieceItem";
-                    attach.gameObject.layer = 8;
-                    attach.gameObject.transform.position = this.gameObject.transform.position;
+                    attach.transform.gameObject.tag = "Untagged";
+                    attach.transform.parent.gameObject.tag = "pieceItem";
+                    attach.transform.parent.gameObject.layer = 8;
+                    attach.transform.parent.gameObject.transform.position = this.gameObject.transform.position;
                     GetAttach(attach);
 
                     //아웃라인 비활성화
                     ZB.OutLineResize.Resize resize;
-                    if (attach.TryGetComponent(out resize))
+                    if (attach.transform.parent.TryGetComponent(out resize))
                         resize.Active(false);
                 }
             }
@@ -133,13 +134,14 @@ namespace JH
             for (int i = 0; i < _index; i++)
             {
                 Attach temp = attaches.Dequeue();
-                temp.gameObject.tag = "null";
+                temp.transform.parent.gameObject.tag = "null";
+                
                 //temp.gameObject.layer = 0;
                 BallUpdate(temp.Size * -1, temp.Score * -1);
 
                 //아웃라인 활성화
                 ZB.OutLineResize.Resize resize;
-                if (temp.TryGetComponent(out resize))
+                if (temp.transform.parent.TryGetComponent(out resize))
                     resize.Active(true);
             }
         }

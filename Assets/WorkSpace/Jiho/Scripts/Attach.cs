@@ -32,15 +32,15 @@ namespace JH
 
         private void Update()
         {
-            if(this.gameObject.tag == "pieceItem")
+            if(transform.parent.gameObject.tag == "pieceItem")
             {
-                dist = Vector3.Distance(this.transform.position, ball.transform.position);
+                dist = Vector3.Distance(this.transform.parent.gameObject.transform.position, ball.transform.position);
                 if (dist > ball.gameObject.transform.localScale.x / 2.3f)
                 {
-                    transform.position = ball.transform.position;
+                    transform.parent.gameObject.transform.position = ball.transform.position;
                 }
             }
-            else if (this.gameObject.tag == "null" && !isShoot)
+            else if (transform.parent.gameObject.tag == "null" && !isShoot)
             {
                 Shoot();
             }
@@ -58,32 +58,33 @@ namespace JH
         private IEnumerator BulletMove()
         {
             timer = 0;
-            while (transform.position.y >= startPos.y)
+            while (transform.parent.gameObject.transform.position.y >= startPos.y)
             {
-                dist = Vector3.Distance(this.transform.position, ball.transform.position);
+                dist = Vector3.Distance(transform.parent.gameObject.transform.position, ball.transform.position);
                 timer += Time.deltaTime;
                 Vector3 tempPos = Parabola(startPos, endPos, 5, timer);
-                transform.position = tempPos;
+                transform.parent.gameObject.transform.position = tempPos;
                 yield return new WaitForEndOfFrame();
 
                 if (dist >= (5 / 3))
-                    this.gameObject.layer = 0;
+                    this.transform.parent.gameObject.layer = 0;
             }
-            this.gameObject.tag = "fieldItem";
-            this.gameObject.layer = 0;
             isShoot = false;
+            transform.gameObject.tag = "fieldItem";
+            transform.parent.gameObject.tag = "Untagged";
+            transform.parent.gameObject.layer = 0;
         }
 
         private void Shoot()
         {
-            float random = UnityEngine.Random.Range(transform.position.x - (transform.localScale.x * 5), transform.position.x + (transform.localScale.x * 5));
-            float random2 = UnityEngine.Random.Range(transform.position.z - (transform.localScale.z * 5), transform.position.z + (transform.localScale.z * 5));
+            float random = UnityEngine.Random.Range(transform.parent.gameObject.transform.position.x - (transform.localScale.x * 5), transform.parent.gameObject.transform.position.x + (transform.localScale.x * 5));
+            float random2 = UnityEngine.Random.Range(transform.parent.gameObject.transform.position.z - (transform.localScale.z * 5), transform.parent.gameObject.transform.position.z + (transform.localScale.z * 5));
 
             this.gameObject.layer = 6;
             isShoot = true;
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            startPos = transform.position;
-            endPos = new Vector3(random, transform.position.y, random2);
+            //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            startPos = transform.parent.gameObject.transform.position;
+            endPos = new Vector3(random, transform.parent.gameObject.transform.position.y, random2);
 
             StartCoroutine("BulletMove");
         }
