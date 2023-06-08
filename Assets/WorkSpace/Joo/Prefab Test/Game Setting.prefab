@@ -2946,6 +2946,7 @@ MonoBehaviour:
   m_sceneName_Next: 1_Stage
   moveScrollbar: {fileID: 2227685725520294757}
   rotScrollbar: {fileID: 2227685725762720665}
+  ball: {fileID: 0}
 --- !u!114 &2227685725005278138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7756,12 +7757,12 @@ PrefabInstance:
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
@@ -7801,12 +7802,12 @@ PrefabInstance:
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
