@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
+using ZB;
 using ZB.Architecture;
 
 public class ObjectHandler : MonoBehaviour, IHandlers
@@ -23,6 +25,7 @@ public class ObjectHandler : MonoBehaviour, IHandlers
     {
         spawner.SpawnerInit();
         ballState.tempSize = 0;
+        Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.audioDictionary[SceneManager.GetActiveScene().name], true);
     }
 
     public void OnExitStage()

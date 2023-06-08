@@ -2,11 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class AudioData
+{
+    [Header("들어갈 사운드")]
+    public AudioClip audio;
+    [Header("사운드 이름(배경음은 해당 씬 이름이랑 동일하게)")]
+    public string audioName;
+}
 
 public class SoundMaster : MonoBehaviour
 {
-    public AudioClip[] clips;
+
+    public AudioData[] audioDatas;
+
+    public Dictionary<string, AudioClip> audioDictionary;
+
     [SerializeField] private AudioSource[] audioSources;
+
+    private void Awake()
+    {
+        audioDictionary = new Dictionary<string, AudioClip>();
+        AudioDataInit();
+    }
+
+    private void AudioDataInit()
+    {
+        for(int i = 0; i < audioDatas.Length; i++) audioDictionary.Add(audioDatas[i].audioName, audioDatas[i].audio);
+    }
 
     public void Play(AudioClip audioClip, bool _isBgm, float pitch = 1.0f)
     {

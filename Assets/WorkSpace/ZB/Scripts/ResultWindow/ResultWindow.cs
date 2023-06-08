@@ -35,7 +35,7 @@ namespace ZB
 
         [SerializeField] Scrollbar moveScrollbar;
         [SerializeField] Scrollbar rotScrollbar;
-        BallMove ball;
+        [SerializeField] BallMove ball;
 
         private void Update() //Å×½ºÆ®
         {
@@ -47,12 +47,14 @@ namespace ZB
 
         public void OnBtnClicked_Restart()
         {
+            Time.timeScale = 1;
             m_uEvent_Restart.Invoke();
             Managers.instance.SceneMove.SceneMoveStart(m_sceneName_Restart);
         }
 
         public void OnBtnClicked_GoSceneMain()
         {
+            Time.timeScale = 1;
             m_uEvent_GoSceneMain.Invoke();
             Managers.instance.SceneMove.SceneMoveStart(m_sceneName_Main);
         }
