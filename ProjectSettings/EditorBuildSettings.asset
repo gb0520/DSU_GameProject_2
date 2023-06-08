@@ -6,14 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/WorkSpace/Main/Scenes/Title.unity
+    guid: 7c41f762b61b57943ba644cd233046a0
+  - enabled: 1
     path: Assets/WorkSpace/Main/Scenes/lobby.unity
     guid: 65678e89255b15b45ab6d8df48fd2e84
   - enabled: 1
+    path: Assets/WorkSpace/Main/Scenes/Tutorial_1_stage.unity
+    guid: 72cc12f376adf0e458f668afc60f21ef
+  - enabled: 1
+    path: Assets/WorkSpace/Main/Scenes/Tutorial_2_stage.unity
+    guid: 38f5fb0098953cb459585b1ad2bbac30
+  - enabled: 1
+    path: Assets/WorkSpace/Main/Scenes/Tutorial_3_stage.unity
+    guid: 75d0252d60d129b4e9f2608de647d288
+  - enabled: 1
     path: Assets/WorkSpace/Main/Scenes/1_Stage.unity
     guid: 8a2a6a19dd8abc24faa4654f2c37916f
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 09fff7f2c5c8c8a4ca49e53546c3be6e,
       type: 2}
