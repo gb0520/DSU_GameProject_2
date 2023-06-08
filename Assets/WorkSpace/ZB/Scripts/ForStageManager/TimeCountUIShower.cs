@@ -67,11 +67,11 @@ namespace ZB
 
         static public int SecondCount_To_MinuiteInteger(float nowTime)
         {
-            return (int)nowTime / 60;
+            return (int)(nowTime / 60);
         }
         static public int SecondCount_To_SecondInteger(float nowTime)
         {
-            return (int)nowTime % 60;
+            return (int)(nowTime % 60);
         }
     }
 }

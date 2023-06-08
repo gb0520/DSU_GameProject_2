@@ -35,6 +35,14 @@ namespace ZB
             Parser.WriteSingle(Parser.AccessStyle.PersistentDataPath, path, saveData.GetDataByList(), true);
         }
 
+        public void WriteData_New()
+        {
+            Debug.LogError("WriteDataNew!");
+            saveData = new SaveData();
+            Parser.WriteSingle(Parser.AccessStyle.PersistentDataPath, path, saveData.GetDataByList(), true);
+            ReadData();
+        }
+
         //데이터에 있는 정보 일부 읽기
         public bool Dic_ReadData(string key)
         {
@@ -94,9 +102,6 @@ namespace ZB
             public SaveData()
             {
                 dicData = new Dictionary<string, string>();
-                dicData.Add("StartAtTutorial", "false");
-                dicData.Add("Tutorial_1_stage", "false");
-                dicData.Add("Tutorial_2_stage", "false");
                 dicData.Add("Tutorial_3_stage", "false");
                 dicData.Add("1_Stage", "false");
             }
