@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 2251302178674206451}
   - component: {fileID: 1165976443218332891}
   - component: {fileID: 4939794785302351593}
-  - component: {fileID: 4921988288199824895}
   - component: {fileID: 5099948926313671095}
   - component: {fileID: 5976970053823508540}
   m_Layer: 0
   m_Name: AttachItem
-  m_TagString: fieldItem
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,31 +60,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699474631806275071}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4921988288199824895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699474631806275071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c8c81c0e09021f44a901bf23c295d99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 0
-  count: 0
-  size: 0.15
-  score: 2
-  least: 0
-  test: 6.7
-  isShoot: 0
-  ball: {fileID: 0}
+  m_Size: {x: 1, y: 0.38, z: 1}
+  m_Center: {x: 0, y: -0.3, z: 0}
 --- !u!114 &5099948926313671095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Resizeable: 1
   targetOutLine: {fileID: 5099948926313671095}
-  targetAttach: {fileID: 4921988288199824895}
+  targetAttach: {fileID: 1106990102437425880}
   lineSize: 10
   resizeSpeed: 20
   entering: 0
@@ -134,9 +113,10 @@ GameObject:
   - component: {fileID: 3328290819864858846}
   - component: {fileID: 12867591396610935}
   - component: {fileID: 465161256235113327}
-  m_Layer: 8
+  - component: {fileID: 1106990102437425880}
+  m_Layer: 0
   m_Name: prop_3_pdf
-  m_TagString: Untagged
+  m_TagString: fieldItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,8 +194,28 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3982022253283277774}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.31, z: 0.65}
+  m_Size: {x: 0.5, y: 0.5, z: 2.86}
   m_Center: {x: -0.000000007450581, y: -6.661338e-16, z: 0.4324084}
+--- !u!114 &1106990102437425880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3982022253283277774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8c81c0e09021f44a901bf23c295d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  count: 0
+  size: 0.15
+  score: 2
+  least: 0
+  test: 6.7
+  isShoot: 0
+  ball: {fileID: 0}

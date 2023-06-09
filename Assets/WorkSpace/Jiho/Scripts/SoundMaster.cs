@@ -31,6 +31,8 @@ public class SoundMaster : MonoBehaviour
         for(int i = 0; i < audioDatas.Length; i++) audioDictionary.Add(audioDatas[i].audioName, audioDatas[i].audio);
     }
 
+    
+
     public void Play(AudioClip audioClip, bool _isBgm, float pitch = 1.0f)
     {
         if (audioClip == null)
