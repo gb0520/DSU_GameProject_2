@@ -7264,7 +7264,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_realFollow
       value: 
-      objectReference: {fileID: 1137557382091658698}
+      objectReference: {fileID: 2778171005408541618}
     - target: {fileID: 581373604972061112, guid: 70f7482ec26cb414fad0e5f6107600de,
         type: 3}
       propertyPath: m_screenDrag
@@ -7631,6 +7631,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e309ff6cca7f44f44a91eaa7265e4052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2778171005408541618 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4063477845954202595, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2227685724204789841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6581363811667776383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5025990630015165230, guid: 5dfb096bf45d69b498fd3d2fdae41daf,
