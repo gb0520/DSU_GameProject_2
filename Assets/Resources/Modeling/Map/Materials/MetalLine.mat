@@ -201,7 +201,7 @@ Material:
     - _DstBlend: 0
     - _DynamicNoisyOutline: 0
     - _EnvironmentReflections: 1
-    - _EnvironmentalLightingIntensity: 1
+    - _EnvironmentalLightingIntensity: 2.5
     - _FarDistanceMaxWidth: 10
     - _GIFlatShade: 0
     - _GIShadeThreshold: 0
@@ -216,7 +216,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Glow_Edge_Width: 1
-    - _HighlightColorPower: 1
+    - _HighlightColorPower: 0.75
     - _LigIgnoYNorDir: 0
     - _LightAffectOutlineColor: 0
     - _LightAffectRimLightColor: 0
@@ -283,7 +283,7 @@ Material:
     - _ReduSha: 0.5
     - _RefMetallic: 1
     - _RefVal: 0
-    - _ReflectionIntensity: 0.45
+    - _ReflectionIntensity: 0.75
     - _ReflectionRoughtness: 0
     - _RimLigInt: 1
     - _RimLightColorPower: 10
@@ -340,8 +340,8 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlossColor: {r: 1, g: 1, b: 1, a: 1}
     - _Glow_Color: {r: 1, g: 1, b: 1, a: 1}
-    - _HighlightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 1, g: 0.5639591, b: 0, a: 1}
+    - _HighlightColor: {r: 1, g: 0.6552761, b: 0.0990566, a: 1}
+    - _MainColor: {r: 1, g: 0.5423229, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineOffset: {r: 0, g: 0, b: 0, a: 1}
     - _OverallShadowColor: {r: 0, g: 0, b: 0, a: 1}
