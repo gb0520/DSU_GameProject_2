@@ -13,12 +13,11 @@ namespace ZB
         public SceneMove SceneMove { get => sceneMove; }
         public ScreenSwapVisualizer ScreenSwap { get => screenSwapVisualizer; }
         public SoundMaster SoundMaster { get => soundMaster; }
-        public Save Save { get => save; }
 
         [SerializeField] private SceneMove sceneMove;
         [SerializeField] private ScreenSwapVisualizer screenSwapVisualizer;
         [SerializeField] private SoundMaster soundMaster;
-        [SerializeField] private Save save;
+
 
 
         private void Awake()

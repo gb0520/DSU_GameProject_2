@@ -6,11 +6,14 @@ namespace ZB.CSV
 {
     public class DataPool : MonoBehaviour
     {
+        public enum LoadStyle { single, multiple }
+
         public string Path { get => path; }
         public string[] FileNames { get => fileNames; }
         public string[] RowDatas { get => rowDatas; }
         public List<List<Dictionary<string,string>>> Files;
 
+        [SerializeField] LoadStyle loadStyle;
         [SerializeField] string path;
         [SerializeField] string[] fileNames;
         [SerializeField] string[] rowDatas;
@@ -18,9 +21,18 @@ namespace ZB.CSV
         [ContextMenu("Load")]
         public void Load()
         {
-            fileNames = new string[1];
-            Files = new List<List<Dictionary<string, string>>>();
-            Files.Add(Parser.ReadSingle(Parser.AccessStyle.PersistentDataPath, path, out fileNames[0]));
+            switch(loadStyle)
+            {
+                case LoadStyle.single:
+                    fileNames = new string[1];
+                    Files = new List<List<Dictionary<string, string>>>();
+                    Files.Add(Parser.ReadSingle(path, out fileNames[0]));
+                    break;
+
+                case LoadStyle.multiple:
+                    Files = Parser.ReadMultiple(path, out fileNames);
+                    break;
+            }
 
             List<string> list = new List<string>();
             foreach (KeyValuePair<string, string> item in Files[0][0])

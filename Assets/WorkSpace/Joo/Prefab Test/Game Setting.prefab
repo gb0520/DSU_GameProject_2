@@ -7763,12 +7763,12 @@ PrefabInstance:
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
@@ -7808,12 +7808,12 @@ PrefabInstance:
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 6742837017632269836, guid: 229be895be57c714ba40ef8dc5f40155,
         type: 3}
@@ -7850,6 +7850,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3832816349169921303}
     m_Modifications:
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[0].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: d3a43a1fa18f1de4ea3c0ebc2456cd77, type: 3}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[4].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 22f91ca96de6b1843a00934182aea4a4, type: 3}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[5].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e08fc112e488a84fb6e7230d37ea708, type: 3}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[6].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: e903e959f3404a64796481bacb6f3305, type: 3}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[7].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 986a97ee72f0ca846b49b0e9d1927da1, type: 3}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[8].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: cd1f3b54892116a4aa084dcee170ee5e, type: 3}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[4].audioName
+      value: 2_Stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[5].audioName
+      value: 3_Stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[6].audioName
+      value: Tutorial_1_stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[7].audioName
+      value: Tutorial_2_stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243988137054847048, guid: 4d8294a9e4aabdb42a9922d75bba451c,
+        type: 3}
+      propertyPath: audioDatas.Array.data[8].audioName
+      value: Tutorial_3_stage
+      objectReference: {fileID: 0}
     - target: {fileID: 3053614670205790349, guid: 4d8294a9e4aabdb42a9922d75bba451c,
         type: 3}
       propertyPath: m_Name

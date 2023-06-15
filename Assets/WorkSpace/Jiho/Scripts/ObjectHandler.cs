@@ -25,6 +25,7 @@ public class ObjectHandler : MonoBehaviour, IHandlers
     {
         spawner.SpawnerInit();
         ballState.tempSize = 0;
+        Managers.instance.SoundMaster.Play(Managers.instance.SoundMaster.audioDictionary[SceneManager.GetActiveScene().name], true);
     }
 
     public void OnExitStage()
