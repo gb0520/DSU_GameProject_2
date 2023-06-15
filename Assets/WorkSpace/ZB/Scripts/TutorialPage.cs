@@ -12,7 +12,7 @@ namespace ZB
 
         public void OnBtnClicked()
         {
-            target.DOScale(Vector3.zero, 1).SetEase(Ease.InQuart).OnComplete(() => target.gameObject.SetActive(false));
+            target.DOScale(Vector3.zero, 0.6f).SetEase(Ease.InBack).OnComplete(() => target.gameObject.SetActive(false));
         }
     }
 }
