@@ -5372,9 +5372,9 @@ MonoBehaviour:
   ray: {fileID: 4378834488627933686}
   controlActive: 0
   groundTouching: 0
-  rotSpeed: 0.3
-  moveSpeed: 20
-  moveMaxSpeed: 10
+  rotSpeed: 0.5
+  moveSpeed: 30
+  moveMaxSpeed: 20
   breakPower: 0.5
   joyStickInput: {x: 0, y: 0}
   rotResult: 0
@@ -6138,6 +6138,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 6745654242648996082, guid: 21c2854d3d25cbb469e76151d2d6eb13,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 555e7e8de7014104381f796c541f1f9c, type: 2}
     - target: {fileID: 7233488056244659159, guid: 21c2854d3d25cbb469e76151d2d6eb13,
         type: 3}
       propertyPath: m_Layer

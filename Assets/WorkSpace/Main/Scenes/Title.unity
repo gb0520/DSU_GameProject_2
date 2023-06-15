@@ -492,11 +492,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1523948624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cef89d427062854dba21b59e380a5d8, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene_Tutorial_1: Tutorial_1_stage
-  scene_Lobby: lobby
 --- !u!4 &1523948626
 Transform:
   m_ObjectHideFlags: 0

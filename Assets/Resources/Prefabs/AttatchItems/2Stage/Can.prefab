@@ -64,8 +64,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.33619133, y: 0.39636788, z: 0.28660858}
-  m_Center: {x: 0.0051570176, y: -0.30181643, z: -0.007436216}
+  m_Size: {x: 0.33619136, y: 0.506275, z: 0.28660858}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2800288309257370108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 0, g: 0.5104327, b: 1, a: 1}
   outlineWidth: 10
   precomputeOutline: 0
@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7389688914748212725}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.545, z: 0}
+  m_LocalPosition: {x: 0, y: -0.205, z: 0}
   m_LocalScale: {x: 0.62145, y: 0.62145, z: 0.7521341}
   m_ConstrainProportionsScale: 0
   m_Children: []

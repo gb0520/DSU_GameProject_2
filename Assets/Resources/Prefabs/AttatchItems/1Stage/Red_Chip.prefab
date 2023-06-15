@@ -64,8 +64,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.626144, y: 2.3782704, z: 6.9867735}
-  m_Center: {x: -0.054977417, y: -1.5709165, z: -0.003223896}
+  m_Size: {x: 9.626144, y: 3.7304888, z: 6.9867735}
+  m_Center: {x: 0, y: -1.6398001, z: 0}
 --- !u!114 &421261347258034633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 0, g: 0.5104327, b: 1, a: 1}
+  outlineColor: {r: 0, g: 0.12270355, b: 1, a: 1}
   outlineWidth: 10
   precomputeOutline: 0
   bakeKeys: []
