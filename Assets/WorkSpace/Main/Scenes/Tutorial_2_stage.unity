@@ -183,6 +183,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2190444852828743602, guid: 67fcaf9f44c7d394683831e3c7638e0a,
+        type: 3}
+      propertyPath: rotSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190444852828743602, guid: 67fcaf9f44c7d394683831e3c7638e0a,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190444852828743602, guid: 67fcaf9f44c7d394683831e3c7638e0a,
+        type: 3}
+      propertyPath: breakPower
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190444852828743602, guid: 67fcaf9f44c7d394683831e3c7638e0a,
+        type: 3}
+      propertyPath: moveMaxSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2227685724611478356, guid: 67fcaf9f44c7d394683831e3c7638e0a,
         type: 3}
       propertyPath: danger_obj
@@ -196,12 +216,12 @@ PrefabInstance:
     - target: {fileID: 2227685725005278136, guid: 67fcaf9f44c7d394683831e3c7638e0a,
         type: 3}
       propertyPath: m_sceneName_Next
-      value: lobby
+      value: Tutorial_3_stage
       objectReference: {fileID: 0}
     - target: {fileID: 2227685725005278136, guid: 67fcaf9f44c7d394683831e3c7638e0a,
         type: 3}
       propertyPath: m_sceneName_Restart
-      value: Tutorial_3_stage
+      value: Tutorial_2_stage
       objectReference: {fileID: 0}
     - target: {fileID: 2227685726242177770, guid: 67fcaf9f44c7d394683831e3c7638e0a,
         type: 3}
